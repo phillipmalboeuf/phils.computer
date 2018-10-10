@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.html",
   "scripts": {
+    "theme": "theme watch",
     "build": "parcel build ./scripts/index.tsx -d ./assets",
-    "watch": "parcel serve ./scripts/index.tsx -d ./assets --https --port=8081 --hmr-hostname=localhost"
+    "scripts": "parcel serve ./scripts/index.tsx -d ./assets --https --port=8081 --hmr-hostname=localhost"
   },
   "keywords": [],
   "author": "Phillip Malboeuf <phil@phils.computer>",
