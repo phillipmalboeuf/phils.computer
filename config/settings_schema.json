@@ -1,13 +1,5 @@
 [
   {
-    "name": "phils.computer",
-    "theme_name": "Phil's Computer",
-    "theme_author": "Phillip Malboeuf <phil@phils.computer>",
-    "theme_version": "1.0.0",
-    "theme_documentation_url": "",
-    "theme_support_url": ""
-  },
-  {
     "name": {
       "de": "Farben",
       "en": "Colors",
