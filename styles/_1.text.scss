@@ -5,20 +5,20 @@ html {
   font: #{$base_size}/#{$rythm*1.66} $body_font;
   font-weight: 400;
 
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  // -webkit-font-smoothing: antialiased;
+  // -moz-osx-font-smoothing: grayscale;
 
   // @media #{$big_desktop} {
   //   font-size: 15px;
   // }
 
-  @media #{$tablet_portrait} {
-    font-size: 14px;
-  }
+  // @media #{$tablet_portrait} {
+  //   font-size: 14px;
+  // }
 
-  @media #{$phone} {
-    font-size: 13px;
-  }
+  // @media #{$phone} {
+  //   font-size: 13px;
+  // }
 }
 
 body {
