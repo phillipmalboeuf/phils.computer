@@ -8,14 +8,13 @@ button {
   color: $white;
   text-decoration: none;
   font-size: $base_size;
-  font-family: $alternate_font;
   font-weight: bold;
   text-align: center;
 
   background: $black;
-  padding: $rythm/2 $rythm;
-  line-height: $rythm*1.5;
-  border: none;
+  padding: $rythm/3 $rythm;
+  line-height: $rythm;
+  border: 2px solid transparent;
   border-radius: $border_radius;
   box-shadow: 0 2px 4px fade-out($black, 0.9);
 

@@ -1,17 +1,13 @@
 // #IMAGES
 
-img {
+img,
+svg {
   display: block;
   max-width: 100%;
 
   .full_images &,
   &.img--full {
     width: 100%;
-  }
-
-  .ql-snow .ql-editor & {
-    max-width: $rythm * 40;
-    margin: $rythm*2;
   }
 }
 

@@ -8,7 +8,7 @@ label {
   font-size: $small_size;
   font-weight: bold;
 
-  margin: 0 0 ($rythm/2);
+  margin: 0 0 ($rythm/4);
 }
 
 
@@ -31,16 +31,15 @@ textarea,
   position: relative;
   width: 100%;
 
-  font-family: $alternate_font;
-  font-size: $slight_size;
+  font-size: $base_size;
   font-weight: normal;
-  line-height: 1.2;
+  line-height: $rythm;
 
   color: inherit;
   background: transparent;
-  padding: $rythm/1.333 $rythm/1.5;
+  padding: $rythm/3 $rythm/1.5;
   margin-bottom: $rythm;
-  border: 1.5px solid $grey--light;
+  border: 2px solid $grey--light;
   border-radius: $border_radius*2;
   // box-shadow: 0 1px 6px fade-out($black, 0.9);
 

@@ -2,8 +2,7 @@
 // #BODY
 
 html {
-  font: #{$base_size}/#{$rythm*1.66} $body_font;
-  font-weight: 400;
+  font: #{$base_size}/#{$rythm} $body_font;
 
   // -webkit-font-smoothing: antialiased;
   // -moz-osx-font-smoothing: grayscale;
@@ -41,7 +40,6 @@ main {
 // #HEADINGS
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: $headings_font;
   font-size: $base_size;
   font-weight: bold;
   line-height: $rythm;
@@ -56,7 +54,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: $big_size;
-  line-height: $rythm*3.5;
+  line-height: $rythm;
 
   &.h1--giant {
     font-size: $giant_size;
@@ -123,7 +121,7 @@ h6 {
 // #PARAGRAPHS
 
 p {
-  margin: 0 0 $rythm;
+  margin: 0 0 $rythm*1.5;
 
   &:last-child {
     margin-bottom: 0;
@@ -299,8 +297,6 @@ small,
   font-size: $medium_size;
   line-height: $rythm*2.333;
 }
-
-.alternate { font-family: $alternate_font; }
 
 b,
 strong,

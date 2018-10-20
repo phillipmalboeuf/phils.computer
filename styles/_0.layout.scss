@@ -43,8 +43,13 @@ footer {
 main {
   width: 100vw;
   min-height: 100vh;
-  padding: $rythm 17vw;
+  padding: $rythm*2;
+  max-width: 966px;
   overflow-y: hidden;
+
+  @media #{$tablet_portrait} {
+    padding: $rythm;
+  }
 }
 
 
