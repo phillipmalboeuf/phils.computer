@@ -16,7 +16,7 @@ button {
   line-height: $rythm;
   border: 2px solid transparent;
   border-radius: $border_radius;
-  box-shadow: 0 2px 4px fade-out($black, 0.9);
+  box-shadow: 0 2px 4px fade-out($black, 0.6);
 
   transition: transform $slow, box-shadow $slow;
 
@@ -31,7 +31,7 @@ button {
     text-decoration: none;
 
     transform: translateY(-2px);
-    box-shadow: 0 4px 6px fade-out($black, 0.9);
+    box-shadow: 0 2px 8px fade-out($black, 0.6);
   }
 
   &:active {
