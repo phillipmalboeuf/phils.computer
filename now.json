@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "name": "phils.computer",
+  "alias": "phils.computer",
+  "builds": [{ "src": "dist/server.js", "use": "@now/node-server" }]
+}

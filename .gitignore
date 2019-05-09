@@ -1,10 +1,6 @@
-_ignore
-
-node_modules
-.cache
-
-assets/index.css
-assets/index.js
-assets/index.map
-
-config.yml
+/node_modules
+/.cache
+/dist
+/_ignore
+npm-debug.log
+secret.json
