@@ -16,7 +16,7 @@ export class Portfolio extends React.PureComponent<Props, State> {
   public render() {
     let portfolio = this.context.content.portfolios.items.find(portfolio => portfolio.fields.identifier === this.props.match.params.id)
     return <>
-      <h2>{portfolio.fields.title}</h2>
+      <h1>{portfolio.fields.title}</h1>
       {portfolio.fields.projects && portfolio.fields.projects.map(product => <article key={product.sys.id}>
         <h4>{product.fields.title}</h4>
         <p>{product.fields.excerpt}</p>

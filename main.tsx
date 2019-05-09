@@ -6,8 +6,8 @@ import { ContentContext, Content } from './contexts/content'
 
 import axios, { AxiosRequestConfig } from 'axios'
 
-import { Global, css } from '@emotion/core'
-import { font, colors } from './styles'
+import { css } from 'emotion'
+import { font, colors, rythm, GlobalStyles, gutter } from './styles'
 
 import { Header } from './components/header'
 import { Footer } from './components/footer'
@@ -44,6 +44,13 @@ export class Main extends Component<{}, {
     this.setState({ locale })
   }
 
+  public styles = css`
+    max-width: 42rem;
+    margin: 0 auto;
+    min-height: 88vh;
+    padding: ${gutter*3.33}px ${gutter}px ${gutter}px;
+  `
+
   render() {
     return <>
     {this.state.content
@@ -56,26 +63,12 @@ export class Main extends Component<{}, {
       <BrowserRouter>
         <>
         <Header />
-        <Routes />
+          <main className={this.styles}><Routes /></main>
         <Footer />
         </>
       </BrowserRouter>
     </ContentContext.Provider> : null}
-    <Global
-      styles={css`
-        body {
-          font-family: ${font};
-          color: ${colors.black};
-          margin: 0;
-        }
-
-        a, button {
-          color: inherit;
-          position: relative;
-          &:active { top: 1px; }
-        }
-      `}
-    />
+      <GlobalStyles />
     </>
   }
 }

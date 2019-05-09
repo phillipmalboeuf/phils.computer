@@ -16,7 +16,7 @@ export class Collection extends React.PureComponent<Props, State> {
   public render() {
     let collection = this.context.content.collections.items.find(collection => collection.fields.identifier === this.props.match.params.id)
     return <>
-      <h2>{collection.fields.title}</h2>
+      <h1>{collection.fields.title}</h1>
       {collection.fields.products && collection.fields.products.map(product => <article key={product.sys.id}>
         <h6>{product.fields.title}</h6>
         <p>{product.fields.excerpt}</p>

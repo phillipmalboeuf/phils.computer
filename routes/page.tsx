@@ -17,7 +17,7 @@ export class Page extends React.PureComponent<Props, State> {
   public render() {
     let page = this.context.content.pages.items.find(page => page.fields.identifier === this.props.match.params.id)
     return <>
-      <h1>{page.fields.title}</h1>
+      {/* <h1>{page.fields.title}</h1> */}
       {documentToReactComponents(page.fields.body)}
     </>
   }

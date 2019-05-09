@@ -3,11 +3,11 @@ import { css } from 'emotion'
 
 import { ContentContext } from '../contexts/content'
 
-import { rythm, colors } from '../styles'
+import { rythm, colors, gutter } from '../styles'
 import { Navigation } from './navigation'
 
 const FooterStyles = css`
-  padding: ${rythm}px;
+  padding: ${gutter}px;
   color: ${colors.white};
   background-color: ${colors.black};
 `

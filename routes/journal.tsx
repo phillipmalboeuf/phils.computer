@@ -16,7 +16,7 @@ export class Journal extends React.PureComponent<Props, State> {
   public render() {
     let journal = this.context.content.journals.items.find(journal => journal.fields.identifier === this.props.match.params.id)
     return <>
-      <h2>{journal.fields.title}</h2>
+      <h1>{journal.fields.title}</h1>
       {journal.fields.articles && journal.fields.articles.map(article => <article key={article.sys.id}>
         <h6>{article.fields.title}</h6>
         <p>{article.fields.excerpt}</p>

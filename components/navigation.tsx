@@ -25,6 +25,7 @@ export class Navigation extends React.PureComponent<Props, State> {
         {link.fields.externalLink && <a href={link.fields.externalLink} target='_blank' className={link.fields.emphasize ? 'strong' : ''}>
           {link.fields.label}
         </a>}
+        <br />
         {link.fields.subLinks && <Navigation links={link.fields.subLinks} />}
       </React.Fragment>
       )}
