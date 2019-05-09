@@ -48,26 +48,26 @@ export class Main extends Component<{}, {
     max-width: 42rem;
     margin: 0 auto;
     min-height: 88vh;
-    padding: ${gutter*3.33}px ${gutter}px ${gutter}px;
+    padding: ${gutter*3.33}px ${gutter}px;
   `
 
   render() {
     return <>
-    {this.state.content
-    ? <ContentContext.Provider value={{
-      content: this.state.content,
-      fetchContent: this.fetchContent.bind(this),
-      locale: this.state.locale || 'en-US',
-      selectLocale: this.selectLocale.bind(this)
-    }}>
-      <BrowserRouter>
-        <>
-        <Header />
-          <main className={this.styles}><Routes /></main>
-        <Footer />
-        </>
-      </BrowserRouter>
-    </ContentContext.Provider> : null}
+      {this.state.content
+      ? <ContentContext.Provider value={{
+        content: this.state.content,
+        fetchContent: this.fetchContent.bind(this),
+        locale: this.state.locale || 'en-US',
+        selectLocale: this.selectLocale.bind(this)
+      }}>
+        <BrowserRouter>
+          <>
+          <Header />
+            <main className={this.styles}><Routes /></main>
+          <Footer />
+          </>
+        </BrowserRouter>
+      </ContentContext.Provider> : null}
       <GlobalStyles />
     </>
   }

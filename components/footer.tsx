@@ -16,7 +16,7 @@ export const Footer: SFC<{}> = props => {
   return <ContentContext.Consumer>
     {({ content }) => <footer className={FooterStyles}>
       <Navigation links={content.footer.fields.links} />
-      <p>{content.footer.fields.copyright}</p>
+      <div>{content.footer.fields.copyright}</div>
       <div></div>
     </footer>}
   </ContentContext.Consumer>

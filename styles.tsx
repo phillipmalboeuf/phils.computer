@@ -13,8 +13,13 @@ export const rythm = 20
 export const gutter = rythm * 1.666
 export const radius = 3
 
+
 export const GlobalStyles: SFC<{}> = props => <Global
   styles={css`
+    *, *:before, *:after {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: ${font};
       font-size: ${rythm}px;
@@ -25,8 +30,21 @@ export const GlobalStyles: SFC<{}> = props => <Global
       
       color: ${colors.black};
       background-color: ${colors.ash};
-      white-space: pre-line;
+
       margin: 0;
+    }
+
+    main {
+      display: block;
+    }
+
+    h1, h2, h3, h4, h5, h6, p {
+      white-space: pre-line;
+      margin: 0 0 ${rythm}px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
 
     a, button {
