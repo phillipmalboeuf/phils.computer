@@ -5,6 +5,7 @@ import { ContentContext } from '../contexts/content'
 
 import { rythm, colors, gutter } from '../styles'
 import { Navigation } from './navigation'
+import { Flex, Third, full } from './layout'
 
 const FooterStyles = css`
   padding: ${gutter}px;
@@ -15,9 +16,11 @@ const FooterStyles = css`
 export const Footer: SFC<{}> = props => {
   return <ContentContext.Consumer>
     {({ content }) => <footer className={FooterStyles}>
-      <Navigation links={content.footer.fields.links} />
-      <div>{content.footer.fields.copyright}</div>
-      <div></div>
+      <Flex spaced middle>
+        <Third phone={full}><Navigation links={content.footer.fields.links} /></Third>
+        <div>{content.footer.fields.copyright}</div>
+        <Third></Third>
+      </Flex>
     </footer>}
   </ContentContext.Consumer>
 }
