@@ -37,6 +37,18 @@ export const GlobalStyles: SFC<{}> = props => <Global
     main {
       display: block;
     }
+    
+    h1, h2, h3 {
+      font-size: ${rythm*2}px;
+      font-weight: bold;
+      line-height: ${rythm*2}px;
+    }
+
+    h4, h5, h6 {
+      font-size: ${rythm}px;
+      font-weight: bold;
+      line-height: ${rythm}px;
+    }
 
     h1, h2, h3, h4, h5, h6, p {
       white-space: pre-line;
@@ -49,6 +61,7 @@ export const GlobalStyles: SFC<{}> = props => <Global
 
     a, button {
       color: inherit;
+      text-decoration: none;
       position: relative;
       &:active { top: 1px; }
     }

@@ -1,7 +1,11 @@
 import * as React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { Entry } from 'contentful'
+import { css } from 'emotion'
+
 import { Link as ContentLink, ContentContext } from '../contexts/content'
+import { A } from './text'
+import { rythm } from '../styles'
 
 
 interface Props {
@@ -9,6 +13,9 @@ interface Props {
 }
 interface State {}
 
+const left = css`
+  padding-left: ${rythm/2}px;
+`
 
 export class Navigation extends React.PureComponent<Props, State> {
   static contextType = ContentContext
@@ -18,15 +25,15 @@ export class Navigation extends React.PureComponent<Props, State> {
     return <nav>
       {this.props.links && this.props.links.map(link => <React.Fragment key={link.sys.id}>
         {link.fields.internalLink
-        && <NavLink className={link.fields.emphasize ? 'strong' : ''}
+        && <A
           to={`/${link.fields.internalLink.sys.contentType.sys.id}s/${link.fields.internalLink.fields.identifier}`}>
           {link.fields.label}
-        </NavLink>}
-        {link.fields.externalLink && <a href={link.fields.externalLink} target='_blank' className={link.fields.emphasize ? 'strong' : ''}>
+        </A>}
+        {link.fields.externalLink && <A to={link.fields.externalLink} external>
           {link.fields.label}
-        </a>}
+        </A>}
         <br />
-        {link.fields.subLinks && <Navigation links={link.fields.subLinks} />}
+        <div className={left}>{link.fields.subLinks && <Navigation links={link.fields.subLinks} />}</div>
       </React.Fragment>
       )}
     </nav>
