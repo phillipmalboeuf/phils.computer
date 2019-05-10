@@ -7,6 +7,7 @@ import { Page } from './routes/page'
 import { Collection } from './routes/collection'
 import { Portfolio } from './routes/portfolio'
 import { Journal } from './routes/journal'
+import { Bookshelf } from './routes/bookshelf'
 // import { Product } from './routes/product'
 // import { Subscribe } from './routes/subscribe'
 // import { Thanks } from './routes/thanks'
@@ -25,6 +26,7 @@ export class Routes extends Component<Props, {}> {
       <Route exact path='/collections/:id' component={Collection} />
       <Route exact path='/portfolios/:id' component={Portfolio} />
       <Route exact path='/journals/:id' component={Journal} />
+      <Route exact path='/bookshelfs/:id' component={Bookshelf} />
       <Route exact path='/pages/:id' component={Page} />
       <Route exact path='/' component={Home} />
       {/* 

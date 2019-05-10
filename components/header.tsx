@@ -6,7 +6,7 @@ import { css } from 'emotion'
 import { rythm, colors, gutter } from '../styles'
 
 import { Navigation } from './navigation'
-import { A, Big } from './text'
+import { A, Big, Medium } from './text'
 
 const styles = css`
   position: fixed;
@@ -19,7 +19,7 @@ const styles = css`
 export const Header: SFC<{}> = props => {
   return <ContentContext.Consumer>
     {({ content }) => <header className={styles}>
-      <Link to='/'><Big>{content.header.fields.title}</Big></Link>
+      <Link to='/'><Medium>{content.header.fields.title}</Medium></Link>
       <Navigation links={content.header.fields.links} />
     </header>}
   </ContentContext.Consumer>

@@ -1,8 +1,10 @@
 
 import React from 'react'
 import { Link, RouteComponentProps } from 'react-router-dom'
+import { BLOCKS } from '@contentful/rich-text-types'
 import { ContentContext } from '../contexts/content'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { rich } from '../helpers/formatters'
+import { Big, Huge } from '../components/text'
 
 
 interface Props extends RouteComponentProps<any> {}
@@ -18,7 +20,13 @@ export class Page extends React.PureComponent<Props, State> {
     let page = this.context.content.pages.items.find(page => page.fields.identifier === this.props.match.params.id)
     return <>
       {/* <h1>{page.fields.title}</h1> */}
-      {documentToReactComponents(page.fields.body)}
+      {rich(page.fields.body, {
+        [BLOCKS.EMBEDDED_ENTRY]: node => {
+          return {
+            bookshelf: <div><Link to={`/${node.data.target.sys.contentType.sys.id}s/${node.data.target.fields.identifier}`}><Huge>{node.data.target.fields.title}</Huge></Link></div>
+          }[node.data.target.sys.contentType.sys.id as 'bookshelf']
+        }
+      })}
     </>
   }
 }

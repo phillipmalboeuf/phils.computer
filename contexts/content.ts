@@ -55,6 +55,20 @@ export interface Journal {
   articles: Entry<Article>[]
 }
 
+export interface Book {
+  title: string
+  identifier: string
+  excerpt: string
+  externalLink: string
+}
+
+export interface Bookshelf {
+  title: string
+  identifier: string
+  excerpt: string
+  books: Entry<Book>[]
+}
+
 export interface Link {
   label: string
   internalLink: Entry<Page | Project | Portfolio | Article | Journal>
@@ -82,6 +96,7 @@ export interface Content {
   portfolios: EntryCollection<Portfolio>
   articles: EntryCollection<Article>
   journals: EntryCollection<Journal>
+  bookshelfs: EntryCollection<Bookshelf>
 }
 
 export const ContentContext = React.createContext({

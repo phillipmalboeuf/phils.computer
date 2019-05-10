@@ -33,8 +33,9 @@ const entries = (locale: string): Promise<Content> => Promise.all([
   contentful.getEntries({ content_type: 'project', locale }),
   contentful.getEntries({ content_type: 'portfolio', locale }),
   contentful.getEntries({ content_type: 'article', locale }),
-  contentful.getEntries({ content_type: 'journal', locale })
-]).then(async ([headers, footers, pages, products, collections, projects, portfolios, articles, journals])=> {
+  contentful.getEntries({ content_type: 'journal', locale }),
+  contentful.getEntries({ content_type: 'bookshelf', locale })
+]).then(async ([headers, footers, pages, products, collections, projects, portfolios, articles, journals, bookshelfs])=> {
   return {
     header: headers.items[0],
     footer: footers.items[0],
@@ -44,7 +45,8 @@ const entries = (locale: string): Promise<Content> => Promise.all([
     projects,
     portfolios,
     articles,
-    journals
+    journals,
+    bookshelfs
   } as Content
 })
 

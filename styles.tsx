@@ -6,7 +6,8 @@ export const font = 'Inter UI, sans-serif'
 export const colors = {
   white: 'white',
   black: '#000001',
-  ash: '#F2F3F2'
+  ash: '#F2F3F2',
+  kelly: '#27AE60'
 }
 
 export const rythm = 20
@@ -18,6 +19,10 @@ export const GlobalStyles: SFC<{}> = props => <Global
   styles={css`
     *, *:before, *:after {
       box-sizing: border-box;
+    }
+
+    html {
+      background-color: ${colors.black};
     }
 
     body {
