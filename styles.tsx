@@ -70,5 +70,10 @@ export const GlobalStyles: SFC<{}> = props => <Global
       position: relative;
       &:active { top: 1px; }
     }
+
+    ul, ol {
+      margin: 0 0 ${rythm}px;
+      padding-left: ${rythm}px;
+    }
   `}
 />

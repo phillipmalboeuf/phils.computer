@@ -1,10 +1,14 @@
 
 import React from 'react'
 import { Link, RouteComponentProps } from 'react-router-dom'
-import { BLOCKS } from '@contentful/rich-text-types'
+import { Entry } from 'contentful'
+import { BLOCKS, Document } from '@contentful/rich-text-types'
+
 import { ContentContext } from '../contexts/content'
 import { rich } from '../helpers/formatters'
-import { Big, Huge } from '../components/text'
+import { Big, Huge, Spacer } from '../components/text'
+import { Flex, Quarter, Full, Third } from '../components/layout'
+
 
 
 interface Props extends RouteComponentProps<any> {}
@@ -23,8 +27,27 @@ export class Page extends React.PureComponent<Props, State> {
       {rich(page.fields.body, {
         [BLOCKS.EMBEDDED_ENTRY]: node => {
           return {
-            bookshelf: <div><Link to={`/${node.data.target.sys.contentType.sys.id}s/${node.data.target.fields.identifier}`}><Huge>{node.data.target.fields.title}</Huge></Link></div>
-          }[node.data.target.sys.contentType.sys.id as 'bookshelf']
+            collection: (target: any)=> <></>,
+            bookshelf: (target: any)=> <div><Link to={`/${target.sys.contentType.sys.id}s/${target.fields.identifier}`}><Huge>{target.fields.title}</Huge></Link></div>,
+            columns: (target: any)=> <>
+              <Spacer />
+              <h6>{target.fields.title}</h6>
+              <Flex>
+                {target.fields.columns.map((column: Entry<{
+                  body: Document
+                  size: string
+                }>)=> ({
+                  'One-third': <Third key={column.sys.id}>
+                    {rich(column.fields.body)}
+                  </Third>,
+                  'One-quarter': <Quarter key={column.sys.id}>
+                    {rich(column.fields.body)}
+                  </Quarter>
+                }[column.fields.size as 'One-quarter']))}
+              </Flex>
+              <Spacer />
+            </>
+          }[node.data.target.sys.contentType.sys.id as 'bookshelf'](node.data.target)
         }
       })}
     </>
