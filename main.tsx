@@ -1,7 +1,9 @@
 
 import React, { Component } from 'react'
 import { render, hydrate } from 'react-dom'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Router } from 'react-router-dom'
+import { createBrowserHistory, History } from 'history'
+
 import { ContentContext, Content } from './contexts/content'
 
 import axios, { AxiosRequestConfig } from 'axios'
@@ -14,16 +16,29 @@ import { Footer } from './components/footer'
 import { Routes } from './routes'
 
 
+
 export class Main extends Component<{}, {
   content?: Content
   locale: string
 }> {
+
+  public history: History
+  private previous: string
+
   constructor(props: {}) {
     super(props)
     this.state = {
       content: undefined,
       locale: 'en-US'
     }
+
+    this.history = createBrowserHistory()
+    this.history.listen(location => {
+      if (this.previous !== location.pathname) {
+        window.scrollTo(0, 0)
+        this.previous = location.pathname
+      }
+    })
   }
 
   componentDidMount() {
@@ -60,13 +75,13 @@ export class Main extends Component<{}, {
         locale: this.state.locale || 'en-US',
         selectLocale: this.selectLocale.bind(this)
       }}>
-        <BrowserRouter>
+        <Router history={this.history}>
           <>
           <Header />
-            <main className={this.styles}><Routes /></main>
+          <main className={this.styles}><Routes /></main>
           <Footer />
           </>
-        </BrowserRouter>
+        </Router>
       </ContentContext.Provider> : null}
       <GlobalStyles />
     </>

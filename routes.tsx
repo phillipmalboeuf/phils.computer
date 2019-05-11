@@ -15,13 +15,10 @@ import { Bookshelf } from './routes/bookshelf'
 // import { Login } from './routes/login'
 // import { FourOFour } from './routes/404'
 
-interface Props {
-  onRoute?: Function
-}
+interface Props {}
 
 export class Routes extends Component<Props, {}> { 
   render() {
-    if (this.props.onRoute) { this.props.onRoute() }
     return <Switch>
       <Route exact path='/collections/:id' component={Collection} />
       <Route exact path='/portfolios/:id' component={Portfolio} />
