@@ -5,7 +5,7 @@
   "STRIPE_PRIVATE_KEY": "",
   "POSTMARK_KEY": "",
   "POSTMARK_SENDER": "phil@phils.computer",
-  "POSTMARK_CALLBACK_ROOT": "http://localhost:8080",
+  "REDIRECT_ROOT": "http://localhost:8080",
   "CONTENTFUL_SPACE_ID": "",
   "CONTENTFUL_ACCESS_TOKEN": "",
   "SERVER_PORT": "8089",

@@ -30,7 +30,7 @@ export const A: SFC<{
   external?: boolean
 }> = props => {
   return props.to ? props.external
-  ? <a onClick={e => e.currentTarget.blur()} className={a} href={props.to} target='_blank'>
+  ? <a className={a} href={props.to} target='_blank'>
     {props.children}
   </a>
   : <NavLink onClick={e => e.currentTarget.blur()} activeClassName={current} className={a} to={props.to}>

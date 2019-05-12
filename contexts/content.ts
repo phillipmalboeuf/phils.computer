@@ -16,6 +16,9 @@ export interface Product {
   identifier: string
   excerpt: string
   description: Document
+  price: number
+  type: string
+  getInTouch: string
   cta: string
 }
 

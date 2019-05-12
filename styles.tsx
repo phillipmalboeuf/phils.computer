@@ -7,7 +7,8 @@ export const colors = {
   white: 'white',
   black: '#000001',
   ash: '#F2F3F2',
-  kelly: '#27AE60'
+  kelly: '#27AE60',
+  red: '#CC0000'
 }
 
 export const rythm = 20
@@ -65,6 +66,8 @@ export const GlobalStyles: SFC<{}> = props => <Global
     }
 
     a, button {
+      outline: none;
+      cursor: pointer;
       color: inherit;
       text-decoration: none;
       position: relative;

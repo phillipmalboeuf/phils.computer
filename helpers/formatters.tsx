@@ -22,7 +22,7 @@ export const date = (value: string | Date, time=true, lang='en') =>
 
 
 export const money = (value: number, currency?: string) => 
-  value !== undefined && value !== null ? `$${value.toFixed(2)}${currency ? ` ${currency}` : ''}` : `–`
+  value !== undefined && value !== null ? `${value}${currency ? ` ${currency}` : ''}` : `–`
 
 export const rich = (value: Document, render?: RenderNode) => documentToReactComponents(value, {
   renderNode: {

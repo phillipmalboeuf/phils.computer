@@ -6,9 +6,10 @@ import { BLOCKS, Document } from '@contentful/rich-text-types'
 
 import { ContentContext } from '../contexts/content'
 import { rich } from '../helpers/formatters'
+
 import { Big, Huge, Spacer } from '../components/text'
 import { Flex, Quarter, Full, Third } from '../components/layout'
-
+import { Products } from './collection'
 
 
 interface Props extends RouteComponentProps<any> {}
@@ -27,7 +28,9 @@ export class Page extends React.PureComponent<Props, State> {
       {rich(page.fields.body, {
         [BLOCKS.EMBEDDED_ENTRY]: node => {
           return {
-            collection: (target: any)=> <></>,
+            collection: (target: any)=> <>
+              <Products products={target.fields.products} />
+            </>,
             bookshelf: (target: any)=> <div><Link to={`/${target.sys.contentType.sys.id}s/${target.fields.identifier}`}><Huge>{target.fields.title}</Huge></Link></div>,
             columns: (target: any)=> <>
               <Spacer />
