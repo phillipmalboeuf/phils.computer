@@ -7,6 +7,7 @@ import { set, get } from 'object-path'
 import { FormContext, FormContextProps } from '../contexts/form'
 import { Button } from './button'
 import { colors, rythm, radius } from '../styles'
+import { Flex } from './layout'
 
 
 interface Props {
@@ -170,7 +171,12 @@ export const Input: React.SFC<InputProps> = (props) => {
         </>
       } else if (props.type === 'textarea') {
         return <>
-          {props.label && <label className={label} htmlFor={`${context.form_id}_${props.name}`}>{props.label}{props.optional ? ' (Opt.)' : '' } {props.max && <small>{get(context.values, props.name) ? <span className={props.max - (get(context.values, props.name) as string).length < 6 ? 'red' : ''}>{props.max - (get(context.values, props.name) as string).length}</span> : props.max}</small>}</label>}
+          {props.label && <label className={label} htmlFor={`${context.form_id}_${props.name}`}>
+            <Flex spaced>
+              <span>{props.label}{props.optional ? ' (Opt.)' : '' }</span>
+              {props.max && <small>{get(context.values, props.name) ? <span className={props.max - (get(context.values, props.name) as string).length < 6 ? 'red' : ''}>{props.max - (get(context.values, props.name) as string).length}</span> : props.max}</small>}
+            </Flex>
+          </label>}
           <textarea className={input} name={props.name} id={`${context.form_id}_${props.name}`}
             defaultValue={props.defaultValue}
             value={get(context.values, props.name) || props.value || ''}

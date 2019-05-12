@@ -46,7 +46,7 @@ export const Products: SFC<{
           quantity: values.quantity
         }])} button='Request'>
           <Input type='email' name='email' label='Email address' placeholder='you@your.tld' />
-          <Input type='textarea' name='description' label='Provide more information' placeholder='Describe your project, problem, idea...' />
+          <Input type='textarea' name='description' label='Provide more information' max={280} placeholder='Describe your project, problem, idea...' />
           <Input type='number' name='quantity' label='Quantity' />
         </Form>
       </Overlay>
