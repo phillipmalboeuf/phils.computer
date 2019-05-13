@@ -27,7 +27,7 @@ export const money = (value: number, currency?: string) =>
 export const rich = (value: Document, render?: RenderNode) => documentToReactComponents(value, {
   renderNode: {
     [INLINES.ENTRY_HYPERLINK]: (node, children)=> {
-      return <A to={`/${node.data.target.sys.contentType.sys.id}s/${node.data.target.fields.identifier}`}>{children}</A>
+      return <A to={`/${node.data.target.sys.contentType.sys.id}s/${node.data.target.fields.identifier}`} underline>{children}</A>
     },
     ...render
   }

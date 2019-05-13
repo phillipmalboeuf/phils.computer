@@ -19,7 +19,7 @@ const styles = css`
 export const Header: SFC<{}> = props => {
   return <ContentContext.Consumer>
     {({ content }) => <header className={styles}>
-      <Link to='/'><Medium>{content.header.fields.title}</Medium></Link>
+      <h1><A to='/'><Medium>{content.header.fields.title}</Medium></A></h1>
       <Navigation links={content.header.fields.links} />
     </header>}
   </ContentContext.Consumer>

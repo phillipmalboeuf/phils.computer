@@ -5,12 +5,6 @@ import { rythm, colors, gutter } from '../styles'
 
 
 const a = css`
-  text-decoration: none;
-  background-image: linear-gradient(${colors.kelly}, ${colors.kelly});
-  background-repeat: no-repeat;
-  background-size: 100% .66em;
-  background-position: left 0 bottom -66.6%;
-
   &:hover,
   &:focus {
     top: -1px;
@@ -21,6 +15,13 @@ const a = css`
   }
 `
 
+const underline = css`
+  background-image: linear-gradient(${colors.kelly}, ${colors.kelly});
+  background-repeat: no-repeat;
+  background-size: 100% .66em;
+  background-position: left 0 bottom -66.6%;
+`
+
 const current = css`
   font-weight: bold;
 `
@@ -28,15 +29,17 @@ const current = css`
 export const A: SFC<{
   to?: string
   external?: boolean
+  underline?: boolean
 }> = props => {
+  const className = [a, props.underline && underline].filter(style => style).join(' ')
   return props.to ? props.external
-  ? <a className={a} href={props.to} target='_blank'>
+  ? <a className={className} href={props.to} target='_blank'>
     {props.children}
   </a>
-  : <NavLink onClick={e => e.currentTarget.blur()} activeClassName={current} className={a} to={props.to}>
+  : <NavLink onClick={e => e.currentTarget.blur()} activeClassName={current} className={className} to={props.to}>
     {props.children}
   </NavLink>
-  : <a className={a}>
+  : <a className={className}>
     {props.children}
   </a>
 }

@@ -7,7 +7,7 @@ import { BLOCKS, Document } from '@contentful/rich-text-types'
 import { ContentContext } from '../contexts/content'
 import { rich } from '../helpers/formatters'
 
-import { Big, Huge, Spacer } from '../components/text'
+import { Big, Huge, Spacer, A } from '../components/text'
 import { Flex, Quarter, Full, Third } from '../components/layout'
 import { Products } from './collection'
 
@@ -31,7 +31,7 @@ export class Page extends React.PureComponent<Props, State> {
             collection: (target: any)=> <>
               <Products products={target.fields.products} />
             </>,
-            bookshelf: (target: any)=> <div><Link to={`/${target.sys.contentType.sys.id}s/${target.fields.identifier}`}><Huge>{target.fields.title}</Huge></Link></div>,
+            bookshelf: (target: any)=> <div><A to={`/${target.sys.contentType.sys.id}s/${target.fields.identifier}`}><Huge>{target.fields.title}</Huge></A></div>,
             columns: (target: any)=> <>
               <Spacer />
               <h6>{target.fields.title}</h6>
