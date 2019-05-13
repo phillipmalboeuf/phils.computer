@@ -34,6 +34,7 @@ export interface Project {
   identifier: string
   excerpt: string
   externalLink: string
+  releasedDate: Date
   description: Document
 }
 
@@ -48,6 +49,7 @@ export interface Article {
   title: string
   identifier: string
   excerpt: string
+  publishedDate: Date
   body: Document
 }
 

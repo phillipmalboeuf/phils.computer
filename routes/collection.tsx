@@ -3,19 +3,17 @@ import React, { SFC } from 'react'
 import { Link, RouteComponentProps } from 'react-router-dom'
 import { Entry } from 'contentful'
 import { css } from 'emotion'
+
 import { rythm, colors, gutter, radius } from '../styles'
-
-import { ContentContext, Product } from '../contexts/content'
-import { Button } from '../components/button'
 import { money } from '../helpers/formatters'
+
+import { ContentContext, Product, Collection as ContentCollection } from '../contexts/content'
+import { Checkout } from '../models/checkout'
+
+import { Button } from '../components/button'
 import { Flex } from '../components/layout'
-import { Overlay } from '../components/overlay';
-import { Form, Input } from '../components/form';
-import { Checkout } from '../models/checkout';
-
-
-interface Props extends RouteComponentProps<any> {}
-interface State {}
+import { Overlay } from '../components/overlay'
+import { Form, Input } from '../components/form'
 
 
 const box = css`
@@ -55,15 +53,26 @@ export const Products: SFC<{
   </>
 }
 
+interface Props extends RouteComponentProps<{ id: string }> {}
+interface State {
+  collection: Entry<ContentCollection>
+}
+
 export class Collection extends React.PureComponent<Props, State> {
   static contextType = ContentContext
   context!: React.ContextType<typeof ContentContext>
 
+  constructor(props: Props, context: React.ContextType<typeof ContentContext>) {
+    super(props)
+    this.state = {
+      collection: props.match.params.id && context.content.collections.items.find(collection => collection.fields.identifier === props.match.params.id)
+    }
+  }
+
   public render() {
-    let collection = this.context.content.collections.items.find(collection => collection.fields.identifier === this.props.match.params.id)
     return <>
-      <h1>{collection.fields.title}</h1>
-      <Products products={collection.fields.products} />
+      <h1>{this.state.collection.fields.title}</h1>
+      <Products products={this.state.collection.fields.products} />
     </>
   }
 }
