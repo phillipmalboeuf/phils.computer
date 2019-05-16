@@ -15,6 +15,7 @@ export const rythm = 20
 export const gutter = rythm * 1.666
 export const radius = 3
 
+export const slow = 0.666
 
 export const GlobalStyles: SFC<{}> = props => <Global
   styles={css`
@@ -46,6 +47,11 @@ export const GlobalStyles: SFC<{}> = props => <Global
       margin: 0 auto;
       min-height: 88vh;
       padding: ${gutter*2}px ${gutter}px ${gutter*3.33}px;
+
+      @media all and (max-width:600px) {
+        padding-top: ${gutter*3.33}px;
+        padding-left: ${gutter/2}px;
+      }
     }
 
     article {

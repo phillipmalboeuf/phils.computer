@@ -2,6 +2,7 @@ import React, { SFC } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { css } from 'emotion'
 import { rythm, colors, gutter } from '../styles'
+import { breakpoints } from './layout';
 
 
 const a = css`
@@ -61,8 +62,8 @@ export const Medium: SFC<{}> = props => {
 }
 
 const big = css`
-  font-size: ${rythm*3}px;
   font-weight: bold;
+  font-size: ${rythm*3}px;
   line-height: ${rythm*3}px;
 `
 
@@ -70,11 +71,16 @@ export const Big: SFC<{}> = props => {
   return <span className={big}>{props.children}</span>
 }
 
-const huge = css`
-  font-size: ${rythm*4}px;
+const huge = breakpoints(css`
   font-weight: bold;
+  font-size: ${rythm*4}px;
   line-height: ${rythm*4}px;
-`
+`, {
+  phone: css`
+    font-size: ${rythm*2.66}px;
+    line-height: ${rythm*2.66}px;
+  `
+})
 
 export const Huge: SFC<{}> = props => {
   return <span className={huge}>{props.children}</span>

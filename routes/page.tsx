@@ -8,7 +8,7 @@ import { ContentContext } from '../contexts/content'
 import { rich } from '../helpers/formatters'
 
 import { Big, Huge, Spacer, A } from '../components/text'
-import { Flex, Quarter, Full, Third } from '../components/layout'
+import { Flex, Quarter, Full, Third, third, half } from '../components/layout'
 import { Products } from './collection'
 
 
@@ -45,10 +45,10 @@ export class Page extends React.PureComponent<Props, State> {
                   body: Document
                   size: string
                 }>)=> ({
-                  'One-third': <Third key={column.sys.id}>
+                  'One-third': <Third phone={half} key={column.sys.id}>
                     {rich(column.fields.body)}
                   </Third>,
-                  'One-quarter': <Quarter key={column.sys.id}>
+                  'One-quarter': <Quarter phone={half} key={column.sys.id}>
                     {rich(column.fields.body)}
                   </Quarter>
                 }[column.fields.size as 'One-quarter']))}

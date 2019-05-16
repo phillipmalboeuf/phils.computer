@@ -42,6 +42,11 @@ export class Portfolio extends React.Component<Props, State> {
       max-width: 266px;
       max-height: 133px;
       margin: 0 auto;
+
+      @media all and (max-width:600px) {
+        max-width: 166px;
+        max-height: 88px;
+      }
     `,
     caption: css`
       position: absolute;

@@ -84,6 +84,7 @@ export const Half: SFC<Breakpoints> = props => {
 
 export const quarter = width(0.25)
 export const Quarter: SFC<Breakpoints> = props => {
+  console.log(props)
   return <div className={breakpoints(quarter, props)}>
     {props.children}
   </div>

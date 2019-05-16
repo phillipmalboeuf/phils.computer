@@ -3,30 +3,87 @@ import { Link } from 'react-router-dom'
 import { ContentContext } from '../contexts/content'
 
 import { css } from 'emotion'
-import { rythm, colors, gutter } from '../styles'
+import { rythm, colors, gutter, radius, slow } from '../styles'
 
 import { Navigation } from './navigation'
 import { A, Big, Medium } from './text'
+import { breakpoints } from './layout'
 
-const styles = css`
+const styles = breakpoints(css`
   position: fixed;
   top: 0;
   left: 0;
   width: ${gutter*6}px;
   padding: ${gutter*2}px ${gutter}px;
-`
+`, {
+  phone: css`
+    position: absolute;
+    padding: ${gutter/2}px;
 
-const right = css`
+    span {
+      font-size: ${rythm}px;
+      line-height: ${rythm}px;
+    }
+
+    > nav {
+      position: fixed;
+      z-index: 66;
+      width: 66vw;
+      top: 33vh;
+      left: 100vw;
+      padding: ${gutter/2}px;
+      color: ${colors.white};
+      background-color: ${colors.black};
+      border: 2px solid ${colors.white};
+      border-right: 0;
+      border-radius: ${radius}px;
+
+      transform: translateX(0);
+      transition: transform ${slow}s;
+
+      &:hover {
+        transform: translateX(-100%);
+      }
+
+      &:before {
+        content: "Menu";
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        right: 100%;
+
+        font-size: ${rythm/1.333}px;
+        padding: ${gutter/8.8}px ${gutter/4}px;
+        border: 1px solid ${colors.white};
+        border-bottom: 0;
+        border-radius: ${radius}px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        background-color: ${colors.black};
+        transform-origin: 100% 100%;
+        transform: translateX(1px) rotate(-90deg);
+      }
+    }
+  `
+})
+
+const right = breakpoints(css`
   left: auto;
   right: 0;
   text-align: right;
-`
+`, {
+  phone: css`
+    position: fixed;
+    z-index: 66;
+    font-size: ${rythm/1.333}px;
+  `
+})
 
 export const Header: SFC<{}> = props => {
   return <ContentContext.Consumer>
     {({ content, locale, selectLocale }) => <>
       <header className={styles}>
-        <h1><A to='/'><Medium>{content.header.fields.title}</Medium></A></h1>
+        <A to='/'><Medium>{content.header.fields.title}</Medium></A>
         <Navigation links={content.header.fields.links} />
       </header>
       <header className={[styles, right].join(' ')}>

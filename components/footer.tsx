@@ -5,14 +5,18 @@ import { ContentContext } from '../contexts/content'
 
 import { rythm, colors, gutter } from '../styles'
 import { Navigation } from './navigation'
-import { Flex, Third, full } from './layout'
+import { Flex, Third, full, breakpoints } from './layout'
 import { Center } from './text'
 
-const styles = css`
+const styles = breakpoints(css`
   padding: ${gutter}px;
   color: ${colors.white};
   background-color: ${colors.black};
-`
+`, {
+  phone: css`
+    padding-left: ${gutter/2}px;
+  `
+})
 
 export const Footer: SFC<{}> = props => {
   return <ContentContext.Consumer>
