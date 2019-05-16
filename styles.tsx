@@ -48,6 +48,10 @@ export const GlobalStyles: SFC<{}> = props => <Global
       padding: ${gutter*3.33}px ${gutter}px;
     }
 
+    article {
+      margin: ${rythm}px 0;
+    }
+
     h1, h2, h3, h4, h5, h6, p {
       white-space: pre-line;
       margin: 0 0 ${rythm}px;

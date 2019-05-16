@@ -32,6 +32,11 @@ export class Page extends React.PureComponent<Props, State> {
               <Products products={target.fields.products} />
             </>,
             bookshelf: (target: any)=> <div><A to={`/${target.sys.contentType.sys.id}s/${target.fields.identifier}`}><Huge>{target.fields.title}</Huge></A></div>,
+            playlist: (target: any)=> <article>
+              <h4><A to={target.fields.embedCode} external><Big>{target.fields.title}</Big></A></h4>
+              <p>{target.fields.excerpt}</p>
+              <iframe src={target.fields.embedCode} width='100%' height='366' frameBorder='0' allow='encrypted-media' />
+            </article>,
             columns: (target: any)=> <>
               <Spacer />
               <h6>{target.fields.title}</h6>

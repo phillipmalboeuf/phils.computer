@@ -6,9 +6,10 @@ import { css } from 'emotion'
 
 import { rythm, colors } from '../styles'
 import { ContentContext, Portfolio as ContentPortfolio } from '../contexts/content'
+
+import { rich, date } from '../helpers/formatters'
 import { A } from '../components/text'
-import { rich, date } from '../helpers/formatters';
-import { Flex } from '../components/layout';
+import { Flex } from '../components/layout'
 
 
 interface Props extends RouteComponentProps<any> {}
@@ -29,9 +30,6 @@ export class Portfolio extends React.Component<Props, State> {
   }
 
   public styles = {
-    project: css`
-      margin: ${rythm}px 0;
-    `,
     banner: css`
       position: relative;
       display: flex;
@@ -50,7 +48,7 @@ export class Portfolio extends React.Component<Props, State> {
       top: 0;
       right: 0;
       padding: ${rythm/1.666}px;
-      color: ${colors.white};
+      color: ${colors.kelly};
       font-size: ${rythm/1.333}px;
       text-align: right;
     `
@@ -60,7 +58,7 @@ export class Portfolio extends React.Component<Props, State> {
     return <>
       <h1>{this.state.portfolio.fields.title}</h1>
       {rich(this.state.portfolio.fields.description)}
-      {this.state.portfolio.fields.projects && this.state.portfolio.fields.projects.map(project => <article key={project.sys.id} className={this.styles.project}>
+      {this.state.portfolio.fields.projects && this.state.portfolio.fields.projects.map(project => <article key={project.sys.id}>
         {project.fields.logo && <A to={project.fields.externalLink} external>
           <figure className={this.styles.banner} style={{ backgroundColor: project.fields.color }}>
             <img className={this.styles.logo} src={project.fields.logo.fields.file.url} alt={project.fields.logo.fields.title} />

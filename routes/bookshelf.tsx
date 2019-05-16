@@ -27,9 +27,9 @@ export class Bookshelf extends React.PureComponent<Props, State> {
   public render() {
     return <>
       <h1>{this.state.bookshelf.fields.title}</h1>
-      {this.state.bookshelf.fields.books && this.state.bookshelf.fields.books.map(book => <article key={book.sys.id}>
+      {this.state.bookshelf.fields.books && this.state.bookshelf.fields.books.map(book => <div key={book.sys.id}>
         <A to={book.fields.externalLink} external>{book.fields.title}</A><br />
-      </article>)}
+      </div>)}
       <Spacer />
       <A to={'/pages/books'} underline>← Back to books</A>
     </>

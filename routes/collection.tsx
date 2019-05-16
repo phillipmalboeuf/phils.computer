@@ -18,7 +18,6 @@ import { Form, Input } from '../components/form'
 
 const box = css`
   padding: ${rythm*1.333}px;
-  margin: ${rythm}px 0;
   border: 1px solid ${colors.white};
   border-radius: ${radius}px;
 `

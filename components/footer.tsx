@@ -18,7 +18,7 @@ export const Footer: SFC<{}> = props => {
     {({ content }) => <footer className={FooterStyles}>
       <Flex spaced middle>
         <Third phone={full}><Navigation links={content.footer.fields.links} /></Third>
-        <div>{content.footer.fields.copyright}</div>
+        <div><strong>{content.footer.fields.tagline}</strong><br />{content.footer.fields.copyright}</div>
         <Third></Third>
       </Flex>
     </footer>}
