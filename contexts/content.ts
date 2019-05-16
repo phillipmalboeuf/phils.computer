@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { EntryCollection, Entry } from 'contentful'
+import { EntryCollection, Entry, Asset } from 'contentful'
 import { Document } from '@contentful/rich-text-types'
 
 // import { Overlay } from '../components/overlay'
@@ -36,12 +36,14 @@ export interface Project {
   externalLink: string
   releasedDate: Date
   description: Document
+  logo: Asset
+  color: string
 }
 
 export interface Portfolio {
   title: string
   identifier: string
-  excerpt: string
+  description: Document
   projects: Entry<Project>[]
 }
 
@@ -82,18 +84,22 @@ export interface Link {
   subLinks: Entry<Link>[]
 }
 
+export interface Header {
+  title: string
+  tagline: Document
+  introduction: Document
+  links: Entry<Link>[]
+}
+
+export interface Footer {
+  copyright: string
+  tagline: string
+  links: Entry<Link>[]
+}
+
 export interface Content {
-  header: Entry<{
-    title: string
-    tagline: Document
-    introduction: Document
-    links: Entry<Link>[]
-  }>
-  footer: Entry<{
-    copyright: string
-    tagline: string
-    links: Entry<Link>[]
-  }>
+  header: Entry<Header>
+  footer: Entry<Footer>
   pages: EntryCollection<Page>
   products: EntryCollection<Product>
   collections: EntryCollection<Collection>
