@@ -53,6 +53,7 @@
     "@types/react-router-dom": "^4.3.3",
     "@types/stripe": "^6.25.16",
     "cypress": "^3.2.0",
+    "emotion-server": "^10.0.9",
     "nodemon": "^1.19.0",
     "now": "^15.2.0",
     "parcel-bundler": "^1.12.3",

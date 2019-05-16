@@ -2,8 +2,8 @@ import Bundler, { Packager } from 'parcel-bundler'
 import Path from 'path'
 
 import React from 'react'
-import ReactDOM from 'react-dom/server'
-// import { ServerStyleSheet } from 'styled-components'
+import { renderToString } from 'react-dom/server'
+import { renderStylesToString } from 'emotion-server'
 import { StaticRouter } from 'react-router'
 
 import { entries } from '../clients/contentful'
@@ -29,15 +29,8 @@ const bundler = new Bundler(entryFiles, {
 
 class RoutesPackager extends Packager {
   async addAsset(asset) {
-    // const styles = Array.from(asset.depAssets).find(([key, value])=> key.name === './styles/styles.scss')
-    // const sheet = new ServerStyleSheet()
-    // const html = ReactDOM.renderToString(sheet.collectStyles(
-    //   <StaticRouter location={`/${asset.basename.replace('.html', '').replace('index', '')}`} context={{}}>
-    //     <Routes />
-    //   </StaticRouter>
-    // ))
     
-    const html = ReactDOM.renderToString(<>
+    const html = renderStylesToString(renderToString(<>
       <ContentContext.Provider value={{
         content: await entries(),
         fetchContent: undefined,
@@ -53,18 +46,10 @@ class RoutesPackager extends Packager {
         </StaticRouter>
         <GlobalStyles />
       </ContentContext.Provider>
-    </>)
+    </>))
 
     await this.dest.write(asset.generated.html
-      .replace('<div id="main"></div>', `
-        <div id="main">
-          ${html}
-        </div>
-      `))
-      // .replace(new RegExp('<link rel="stylesheet" href="/styles.*.css">'), `
-      //   <style>${styles[1].generated.css}</style>
-      //   ${sheet.getStyleTags()}
-      // `))
+      .replace('<div id="main"></div>', `<div id="main">${html}</div>`))
   }
 }
 
