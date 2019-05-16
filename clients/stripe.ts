@@ -1,5 +1,4 @@
 
 import Stripe from 'stripe'
-import { CONF } from '../config'
 
-export default new Stripe(CONF('STRIPE_PRIVATE_KEY'))
+export default new Stripe(process.env.STRIPE_PRIVATE_KEY)

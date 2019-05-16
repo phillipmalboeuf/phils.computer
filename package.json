@@ -6,7 +6,8 @@
   "scripts": {
     "start": "now dev",
     "dev": "parcel index.html -p 8080 --open",
-    "dev:server": "parcel watch server.tsx --target=node --out-file=server.js | nodemon dist/server.js",
+    "dev:server": "parcel watch server.tsx --target=node --out-file=server.js | env $(cat .env) nodemon dist/server.js",
+    "build": "parcel build bundler/bundler.jsx -d bundler/dist/ --target=node && env $(cat .env) NODE_ENV=production node bundler/dist/bundler.js",
     "test": "cypress run",
     "test:open": "cypress open",
     "now": "cypress run && now && now alias"
@@ -50,7 +51,7 @@
     "@types/react-dom": "^16.8.4",
     "@types/react-helmet": "^5.0.8",
     "@types/react-router-dom": "^4.3.3",
-    "@types/stripe": "^6.25.15",
+    "@types/stripe": "^6.25.16",
     "cypress": "^3.2.0",
     "nodemon": "^1.19.0",
     "now": "^15.2.0",

@@ -4,6 +4,7 @@ import { render, hydrate } from 'react-dom'
 import { BrowserRouter, Router } from 'react-router-dom'
 import { createBrowserHistory, History } from 'history'
 
+import { entries } from './clients/contentful'
 import { ContentContext, Content } from './contexts/content'
 
 import axios, { AxiosRequestConfig } from 'axios'
@@ -16,20 +17,25 @@ import { Footer } from './components/footer'
 import { Routes } from './routes'
 
 
+interface Props {
+  content?: Content
+}
 
-export class Main extends Component<{}, {
+interface State {
   content?: Content
   locale: string
-}> {
+}
+
+export class Main extends Component<Props, State> {
 
   public history: History
   private previous: string
 
-  constructor(props: {}) {
+  constructor(props: Props) {
     super(props)
     this.state = {
-      content: undefined,
-      locale: 'en-US'
+      content: props.content,
+      locale: localStorage.getItem('locale') || 'en-US'
     }
 
     this.history = createBrowserHistory()
@@ -45,26 +51,14 @@ export class Main extends Component<{}, {
     !this.state.content && this.fetchContent()
   }
 
-  private fetchContent() {
-    axios.get(`${process.env.NODE_ENV === 'production' ? '' : '//localhost:8089'}/content`, {
-      withCredentials: true
-    })
-      .then(response => this.setState({
-        content: response.data
-      }))
+  private async fetchContent() {
+    this.setState({ content: await entries(this.state.locale) })
   }
 
   private selectLocale(locale: string) {
-    // cookies.set('locale', locale)
+    localStorage.setItem('locale', locale)
     this.setState({ locale })
   }
-
-  public styles = css`
-    max-width: 42rem;
-    margin: 0 auto;
-    min-height: 88vh;
-    padding: ${gutter*3.33}px ${gutter}px;
-  `
 
   render() {
     return <>
@@ -78,7 +72,7 @@ export class Main extends Component<{}, {
         <Router history={this.history}>
           <>
           <Header />
-          <main className={this.styles}><Routes /></main>
+          <main><Routes /></main>
           <Footer />
           </>
         </Router>

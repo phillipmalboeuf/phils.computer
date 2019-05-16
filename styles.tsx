@@ -42,8 +42,21 @@ export const GlobalStyles: SFC<{}> = props => <Global
 
     main {
       display: block;
+      max-width: 42rem;
+      margin: 0 auto;
+      min-height: 88vh;
+      padding: ${gutter*3.33}px ${gutter}px;
     }
-    
+
+    h1, h2, h3, h4, h5, h6, p {
+      white-space: pre-line;
+      margin: 0 0 ${rythm}px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
     h1, h2, h3 {
       font-size: ${rythm*2}px;
       font-weight: bold;
@@ -54,15 +67,7 @@ export const GlobalStyles: SFC<{}> = props => <Global
       font-size: ${rythm}px;
       font-weight: bold;
       line-height: ${rythm}px;
-    }
-
-    h1, h2, h3, h4, h5, h6, p {
-      white-space: pre-line;
-      margin: 0 0 ${rythm}px;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
+      margin-bottom: ${rythm/2}px;
     }
 
     a, button {

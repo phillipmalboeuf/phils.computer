@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import { Route, Redirect, Switch } from 'react-router-dom'
+import { Route, Redirect, Switch, RouteComponentProps } from 'react-router-dom'
 
 import { Home } from './routes/home'
 import { Page } from './routes/page'
@@ -16,18 +16,26 @@ import { Bookshelf } from './routes/bookshelf'
 // import { Login } from './routes/login'
 // import { FourOFour } from './routes/404'
 
+interface CollectionRoute extends RouteComponentProps<{ id: string }> {}
 interface Props {}
 
 export class Routes extends Component<Props, {}> { 
   render() {
     return <Switch>
-      <Route exact path='/collections/:id' component={Collection} />
-      <Route exact path='/portfolios/:id' component={Portfolio} />
-      <Route exact path='/journals/:id' component={Journal} />
-      <Route exact path='/articles/:id' component={Article} />
-      <Route exact path='/journals/:journal/articles/:id' component={Article} />
-      <Route exact path='/bookshelfs/:id' component={Bookshelf} />
-      <Route exact path='/pages/:id' component={Page} />
+      <Route exact path='/collections/:id'
+        component={(props: CollectionRoute)=> <Collection key={props.match.params.id} {...props} />} />
+      <Route exact path='/portfolios/:id'
+        component={(props: CollectionRoute)=> <Portfolio key={props.match.params.id} {...props} />} />
+      <Route exact path='/journals/:id'
+        component={(props: CollectionRoute)=> <Journal key={props.match.params.id} {...props} />} />
+      <Route exact path='/articles/:id'
+        component={(props: CollectionRoute)=> <Article key={props.match.params.id} {...props} />} />
+      <Route exact path='/journals/:journal/articles/:id'
+        component={(props: CollectionRoute)=> <Article key={props.match.params.id} {...props} />} />
+      <Route exact path='/bookshelfs/:id'
+        component={(props: CollectionRoute)=> <Bookshelf key={props.match.params.id} {...props} />} />
+      <Route exact path='/pages/:id'
+        component={(props: CollectionRoute)=> <Page key={props.match.params.id} {...props} />} />
       <Route exact path='/' component={Home} />
       {/* 
       <Route exact path='/products/:sku' component={Product} />

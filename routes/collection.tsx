@@ -8,7 +8,7 @@ import { rythm, colors, gutter, radius } from '../styles'
 import { money } from '../helpers/formatters'
 
 import { ContentContext, Product, Collection as ContentCollection } from '../contexts/content'
-import { Checkout } from '../models/checkout'
+// import { Checkout } from '../models/checkout'
 
 import { Button } from '../components/button'
 import { Flex } from '../components/layout'
@@ -22,6 +22,13 @@ const box = css`
   border: 1px solid ${colors.white};
   border-radius: ${radius}px;
 `
+
+const checkout = (email: string, description: string, items: {
+  title: string,
+  price: number,
+  requested_for: Date,
+  quantity: number
+}[]): any => undefined
 
 export const Products: SFC<{
   products: Entry<Product>[]
@@ -37,7 +44,7 @@ export const Products: SFC<{
       ? <Button to='mailto:phil@phils.computer' external>{product.fields.cta || 'Get in Touch'}</Button>
       : <Overlay button={product.fields.cta || 'Add to Cart'}>
         <h4>{product.fields.cta || 'Add to Cart'}</h4>
-        <Form id={product.sys.id} onSubmit={async values => Checkout.create(values.email, values.description, [{
+        <Form id={product.sys.id} onSubmit={async values => checkout(values.email, values.description, [{
           title: product.fields.title,
           price: product.fields.price,
           requested_for: new Date(),
