@@ -19,6 +19,7 @@ import { Routes } from './routes'
 
 interface Props {
   content?: Content
+  locale?: string
 }
 
 interface State {
@@ -35,7 +36,7 @@ export class Main extends Component<Props, State> {
     super(props)
     this.state = {
       content: props.content,
-      locale: localStorage.getItem('locale') || 'en-US'
+      locale: props.locale || localStorage.getItem('locale') || 'en-US'
     }
 
     this.history = createBrowserHistory()
@@ -51,13 +52,14 @@ export class Main extends Component<Props, State> {
     !this.state.content && this.fetchContent()
   }
 
-  private async fetchContent() {
-    this.setState({ content: await entries(this.state.locale) })
+  private async fetchContent(locale?: string) {
+    this.setState({ content: await entries(locale || this.state.locale) })
   }
 
   private selectLocale(locale: string) {
     localStorage.setItem('locale', locale)
     this.setState({ locale })
+    this.fetchContent(locale)
   }
 
   render() {

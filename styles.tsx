@@ -45,7 +45,7 @@ export const GlobalStyles: SFC<{}> = props => <Global
       max-width: 42rem;
       margin: 0 auto;
       min-height: 88vh;
-      padding: ${gutter*3.33}px ${gutter}px;
+      padding: ${gutter*2}px ${gutter}px ${gutter*3.33}px;
     }
 
     article {

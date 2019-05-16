@@ -13,14 +13,25 @@ const styles = css`
   top: 0;
   left: 0;
   width: ${gutter*6}px;
-  padding: ${gutter}px;
+  padding: ${gutter*2}px ${gutter}px;
+`
+
+const right = css`
+  left: auto;
+  right: 0;
+  text-align: right;
 `
 
 export const Header: SFC<{}> = props => {
   return <ContentContext.Consumer>
-    {({ content }) => <header className={styles}>
-      <h1><A to='/'><Medium>{content.header.fields.title}</Medium></A></h1>
-      <Navigation links={content.header.fields.links} />
-    </header>}
+    {({ content, locale, selectLocale }) => <>
+      <header className={styles}>
+        <h1><A to='/'><Medium>{content.header.fields.title}</Medium></A></h1>
+        <Navigation links={content.header.fields.links} />
+      </header>
+      <header className={[styles, right].join(' ')}>
+        <A current={locale === 'en-US'} onClick={e => selectLocale('en-US')}>En</A> <A current={locale === 'fr-CA'} onClick={e => selectLocale('fr-CA')}>Fr</A>
+      </header>
+    </>}
   </ContentContext.Consumer>
 }

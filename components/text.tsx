@@ -30,16 +30,22 @@ export const A: SFC<{
   to?: string
   external?: boolean
   underline?: boolean
+  current?: boolean
+  onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void
 }> = props => {
-  const className = [a, props.underline && underline].filter(style => style).join(' ')
+  const className = [a, props.underline && underline, props.current && current].filter(style => style).join(' ')
+  const onClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.currentTarget.blur()
+    props.onClick && props.onClick(e)
+  }
   return props.to ? props.external
   ? <a className={className} href={props.to} target='_blank'>
     {props.children}
   </a>
-  : <NavLink onClick={e => e.currentTarget.blur()} activeClassName={current} className={className} to={props.to}>
+  : <NavLink onClick={onClick} activeClassName={current} className={className} to={props.to}>
     {props.children}
   </NavLink>
-  : <a className={className}>
+  : <a onClick={onClick} className={className}>
     {props.children}
   </a>
 }
@@ -72,6 +78,11 @@ const huge = css`
 
 export const Huge: SFC<{}> = props => {
   return <span className={huge}>{props.children}</span>
+}
+
+const center = css`text-align: center;`
+export const Center: SFC<{}> = props => {
+  return <div className={center}>{props.children}</div>
 }
 
 const spacer = css`margin-bottom: ${rythm*3}px;`

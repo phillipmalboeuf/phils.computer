@@ -113,6 +113,6 @@ export interface Content {
 export const ContentContext = React.createContext({
   content: {} as Content,
   locale: undefined as string,
-  fetchContent: (): void => undefined,
+  fetchContent: (locale?: string): void => undefined,
   selectLocale: (locale: string)=> function(): void {}
 })
