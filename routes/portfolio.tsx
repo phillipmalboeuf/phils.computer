@@ -48,7 +48,7 @@ export class Portfolio extends React.Component<Props, State> {
       top: 0;
       right: 0;
       padding: ${rythm/1.666}px;
-      color: ${colors.kelly};
+      color: ${colors.black};
       font-size: ${rythm/1.333}px;
       text-align: right;
     `
