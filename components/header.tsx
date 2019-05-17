@@ -35,7 +35,7 @@ const styles = breakpoints(css`
       padding: ${gutter/2}px;
       color: ${colors.white};
       background-color: ${colors.black};
-      border: 2px solid ${colors.white};
+      border: 1px solid ${colors.white};
       border-right: 0;
       border-radius: ${radius}px;
 
