@@ -1,11 +1,14 @@
 {
   "version": 2,
   "name": "phils.computer",
-  "alias": "phils.computer",
+  "alias": "now.phils.computer",
   "builds": [
-    { "src": "dist/*.html", "use": "@now/static" },
-    { "src": "dist/main.*.js", "use": "@now/static" },
-    { "src": "index.js", "use": "@now/node-server@canary" }
+    { "src": "dist/main.js", "use": "@now/static" },
+    { "src": "dist/server.js", "use": "@now/node-server@canary" }
+  ],
+  "routes": [
+    { "src": "/main.js", "dest": "dist/main.js" },
+    { "src": "/(.*)", "dest": "dist/server.js" }
   ],
   "env": {
     "REDIRECT_ROOT": "https://phils.computer",

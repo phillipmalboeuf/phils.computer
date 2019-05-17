@@ -1,5 +1,6 @@
 
-import React, { Component } from 'react'
+import * as React from 'react'
+import { Component } from 'react'
 import { Route, Redirect, Switch, RouteComponentProps } from 'react-router-dom'
 
 import { Home } from './routes/home'

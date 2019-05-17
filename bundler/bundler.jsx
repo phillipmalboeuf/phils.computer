@@ -1,7 +1,7 @@
 import Bundler, { Packager } from 'parcel-bundler'
 import Path from 'path'
 
-import React from 'react'
+import * as React from 'react'
 import { renderToString } from 'react-dom/server'
 import { renderStylesToString } from 'emotion-server'
 import { StaticRouter } from 'react-router'
@@ -15,7 +15,7 @@ import { Footer } from '../components/footer'
 import { GlobalStyles } from '../styles'
 
 
-const entryFiles = Path.join(__dirname, '../../*.html')
+const entryFiles = Path.join(__dirname, '../../index.html')
 const bundler = new Bundler(entryFiles, {
   contentHash: true,
   minify: true,

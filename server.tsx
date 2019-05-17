@@ -1,24 +1,30 @@
-import express, { Application, Request, Response } from 'express'
-import { renderToString } from 'react-dom/server'
-import React from 'react'
+import * as express from 'express'
+import { Application, Request, Response } from 'express'
+
+import * as React from 'react'
 import { StaticRouter } from 'react-router'
+import { renderToString } from 'react-dom/server'
 
-import cors from 'cors'
-import compression from 'compression'
-import morgan from 'morgan'
+import { renderStylesToString, extractCritical } from 'emotion-server'
+import { cache } from 'emotion'
+import { CacheProvider } from '@emotion/core'
+
+import * as cors from 'cors'
+import * as compression from 'compression'
 import { json, raw } from 'body-parser'
-import cookieparser from 'cookie-parser'
+import * as cookieparser from 'cookie-parser'
 
-import contentful from './clients/contentful'
+import contentful, { entries } from './clients/contentful'
 import stripe from './clients/stripe'
 
-import { Content } from './contexts/content'
+import { Content, ContentContext } from './contexts/content'
 import { Routes } from './routes'
 import { date } from './helpers/formatters'
 
 // import { CheckoutItem } from './models/checkout'
-// import { Header } from './components/header'
-// import { Footer } from './components/footer'
+import { Header } from './components/header'
+import { Footer } from './components/footer'
+import { GlobalStyles } from './styles'
 
 
 const server: Application = express()
@@ -28,33 +34,6 @@ server.use(cors({ origin: true, credentials: true }))
 
 server.use(cookieparser(process.env.SECRET))
 server.use(compression())
-server.use(morgan('dev'))
-
-const entries = (locale: string): Promise<Content> => Promise.all([
-  contentful.getEntries({ content_type: 'header', locale, include: 3 }),
-  contentful.getEntries({ content_type: 'footer', locale, include: 3 }),
-  contentful.getEntries({ content_type: 'page', locale, include: 2 }),
-  contentful.getEntries({ content_type: 'product', locale }),
-  contentful.getEntries({ content_type: 'collection', locale }),
-  contentful.getEntries({ content_type: 'project', locale }),
-  contentful.getEntries({ content_type: 'portfolio', locale }),
-  contentful.getEntries({ content_type: 'article', locale }),
-  contentful.getEntries({ content_type: 'journal', locale }),
-  contentful.getEntries({ content_type: 'bookshelf', locale })
-]).then(async ([headers, footers, pages, products, collections, projects, portfolios, articles, journals, bookshelfs])=> {
-  return {
-    header: headers.items[0],
-    footer: footers.items[0],
-    pages,
-    products,
-    collections,
-    projects,
-    portfolios,
-    articles,
-    journals,
-    bookshelfs
-  } as Content
-})
 
 server.get('/content', (req: Request, res: Response) => {
   entries(req.cookies['locale'] || 'en-US').then(entries => res.send(entries))
@@ -85,30 +64,61 @@ server.post('/checkout', json(), async (req: Request, res: Response)=> {
   res.json(session)
 })
 
-// server.get('/*', (req: Request, res: Response) => {
-//   entries(req.cookies['locale'] || 'en-US').then(entries => {
-//     res.send(`<!doctype html>${renderToString(
-//       <html>
-//         <head>
-//           <meta name='viewport' content='width=device-width, height=device-height, initial-scale=1.0' />
-//           <script async src='./main.tsx' />
-//           <script async src='https://js.stripe.com/v3/' />
-//         </head>
-//         <body>
-//           <StaticRouter location={req.originalUrl} context={{}}>
-//             <>
-//               <Header />
-//               <main id='main'>
-//                 <Routes />
-//               </main>
-//               <Footer />
-//             </>
-//           </StaticRouter>
-//         </body>
-//       </html>
-//     )}`)
-//   })
-// })
+server.get('/*', async (req: Request, res: Response) => {
+  const locale = req.cookies['locale'] || 'en-US'
+  const content = await entries(locale)
+
+  const { html, ids, css } = extractCritical(renderToString(
+    <html>
+      <head>
+        <meta name='viewport' content='width=device-width, height=device-height, initial-scale=1.0' />
+        <link rel='stylesheet' href='https://rsms.me/inter/inter.css' />
+      </head>
+      <body>
+        <div id="main">
+          <CacheProvider value={{...cache, key: 'hello'}}>
+            <ContentContext.Provider value={{
+              content,
+              fetchContent: undefined,
+              locale,
+              selectLocale: undefined
+            }}>
+              <StaticRouter location={req.originalUrl} context={{}}>
+                <>
+                  <Header />
+                  <main>
+                    <Routes />
+                  </main>
+                  <Footer />
+                </>
+              </StaticRouter>
+              <GlobalStyles />
+            </ContentContext.Provider>
+          </CacheProvider>
+        </div>
+
+        <script dangerouslySetInnerHTML={{ __html: `window.locale = "${locale}"` }} />
+        <script dangerouslySetInnerHTML={{ __html: `window.content = ${JSON.stringify(content)}` }} />
+        <script async defer src='/main.js' />
+
+        <script async defer src='https://cdn.jsdelivr.net/npm/@widgetbot/crate@3.1.237/umd/crate.min.js' dangerouslySetInnerHTML={{ __html: `
+          new Crate({
+            server: '578597625188712448',
+            channel: '578597625188712450',
+            shard: 'https://disweb.deploys.io',
+            color: '#27AE60',
+            glyph: ['https://images.ctfassets.net/igsltvx7i8jl/31YpHiSCYxX1kchiFs28iZ/e772b04abf43fb00f1a540593316ae5f/comment-discussion.svg', '50%'],
+            css: '.button { box-shadow: none; width: 56px; } @media (max-width: 500px) { .button { border-bottom-left-radius: 50%; border-top-right-radius: 50%; } }',
+            defer: false
+          })
+        ` }} />
+      </body>
+    </html>
+  ))
+
+  res.setHeader('Cache-Control', 's-maxage=10, stale-while-revalidate')
+  res.send(`<!doctype html>${html.replace('</head>', `<style>${css}</style></head>`).replace('</body>', `<script>window.style_ids = ${JSON.stringify(ids)}</script></body>`)}`)
+})
 
 
 server.listen(3000)

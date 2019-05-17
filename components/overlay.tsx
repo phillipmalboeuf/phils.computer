@@ -1,5 +1,6 @@
 
-import React from 'react'
+import * as React from 'react'
+import { PureComponent } from 'react'
 import { css } from 'emotion'
 
 import { Button, Props as ButtonProps } from './button'
@@ -17,7 +18,7 @@ interface State {
   visible: boolean
 }
 
-export class Overlay extends React.PureComponent<Props, State> {
+export class Overlay extends PureComponent<Props, State> {
 
   constructor(props: Props) {
     super(props)

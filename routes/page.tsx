@@ -1,5 +1,6 @@
 
-import React from 'react'
+import * as React from 'react'
+import { PureComponent } from 'react'
 import { Link, RouteComponentProps } from 'react-router-dom'
 import { Entry } from 'contentful'
 import { BLOCKS, Document } from '@contentful/rich-text-types'
@@ -16,7 +17,7 @@ interface Props extends RouteComponentProps<any> {}
 interface State {}
 
 
-export class Page extends React.PureComponent<Props, State> {
+export class Page extends PureComponent<Props, State> {
   static contextType = ContentContext
   context!: React.ContextType<typeof ContentContext>
 

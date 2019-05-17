@@ -1,4 +1,5 @@
-import React, { SFC } from 'react'
+import * as React from 'react'
+import { SFC } from 'react'
 import { Link } from 'react-router-dom'
 import { ContentContext } from '../contexts/content'
 

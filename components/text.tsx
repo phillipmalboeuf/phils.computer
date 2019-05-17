@@ -1,8 +1,9 @@
-import React, { SFC } from 'react'
+import * as React from 'react'
+import { SFC } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { css } from 'emotion'
 import { rythm, colors, gutter } from '../styles'
-import { breakpoints } from './layout';
+import { breakpoints } from './layout'
 
 
 const a = css`

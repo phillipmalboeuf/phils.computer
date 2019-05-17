@@ -1,5 +1,6 @@
 
-import React from 'react'
+import * as React from 'react'
+import { Component } from 'react'
 import { Link, RouteComponentProps } from 'react-router-dom'
 import { Entry } from 'contentful'
 import { css } from 'emotion'
@@ -18,7 +19,7 @@ interface State {
 }
 
 
-export class Portfolio extends React.Component<Props, State> {
+export class Portfolio extends Component<Props, State> {
   static contextType = ContentContext
   context!: React.ContextType<typeof ContentContext>
 

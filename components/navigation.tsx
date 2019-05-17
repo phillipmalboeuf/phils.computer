@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { PureComponent } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { Entry } from 'contentful'
 import { css } from 'emotion'
@@ -17,7 +18,7 @@ const left = css`
   padding-left: ${rythm/2}px;
 `
 
-export class Navigation extends React.PureComponent<Props, State> {
+export class Navigation extends PureComponent<Props, State> {
   static contextType = ContentContext
   context!: React.ContextType<typeof ContentContext>
 

@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { createContext } from 'react'
 import { EntryCollection, Entry, Asset } from 'contentful'
 import { Document } from '@contentful/rich-text-types'
 
@@ -110,7 +111,7 @@ export interface Content {
   bookshelfs: EntryCollection<Bookshelf>
 }
 
-export const ContentContext = React.createContext({
+export const ContentContext = createContext({
   content: {} as Content,
   locale: undefined as string,
   fetchContent: (locale?: string): void => undefined,

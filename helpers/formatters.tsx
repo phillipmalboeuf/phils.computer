@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { documentToReactComponents, Options, RenderNode } from '@contentful/rich-text-react-renderer'
 import { Document, BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types'
 

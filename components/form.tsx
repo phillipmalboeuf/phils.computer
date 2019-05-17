@@ -1,6 +1,7 @@
 
 
-import React from 'react'
+import * as React from 'react'
+import { Component } from 'react'
 import { css } from 'emotion'
 import { set, get } from 'object-path'
 
@@ -24,7 +25,7 @@ interface State extends FormContextProps {
   error?: string | JSX.Element
 }
 
-export class Form extends React.Component<Props, State> {
+export class Form extends Component<Props, State> {
 
   private autosave: NodeJS.Timeout = null
 

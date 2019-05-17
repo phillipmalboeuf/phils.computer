@@ -1,4 +1,5 @@
-import React, { Component, SFC } from 'react'
+import * as React from 'react'
+import { Component, SFC } from 'react'
 import { Global, css } from '@emotion/core'
 
 export const font = 'Inter UI, sans-serif'
