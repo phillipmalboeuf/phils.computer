@@ -3,8 +3,6 @@ import { createContext } from 'react'
 import { EntryCollection, Entry, Asset } from 'contentful'
 import { Document } from '@contentful/rich-text-types'
 
-// import { Overlay } from '../components/overlay'
-
 export interface Page {
   title: string
   identifier: string
@@ -26,6 +24,7 @@ export interface Product {
 export interface Collection {
   title: string
   identifier: string
+  description: Document
   excerpt: string
   products: Entry<Product>[]
 }

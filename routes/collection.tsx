@@ -6,13 +6,13 @@ import { Entry } from 'contentful'
 import { css } from 'emotion'
 
 import { rythm, colors, gutter, radius } from '../styles'
-import { money } from '../helpers/formatters'
+import { money, rich } from '../helpers/formatters'
 
 import { ContentContext, Product, Collection as ContentCollection } from '../contexts/content'
 // import { Checkout } from '../models/checkout'
 
 import { Button } from '../components/button'
-import { Flex, breakpoints } from '../components/layout'
+import { Flex, breakpoints, TwoThirds, Half } from '../components/layout'
 import { Overlay } from '../components/overlay'
 import { Form, Input } from '../components/form'
 
@@ -21,6 +21,10 @@ const box = breakpoints(css`
   padding: ${rythm*1.333}px;
   border: 1px solid ${colors.white};
   border-radius: ${radius}px;
+  
+  p {
+    margin-top: ${rythm/2}px;
+  }
 `, {
   phone: css`
     padding: ${rythm}px;
@@ -40,7 +44,7 @@ export const Products: SFC<{
   return <>
   {props.products && props.products.map(product => <article className={box} key={product.sys.id}>
     <Flex spaced>
-      <h4>{product.fields.title}</h4>
+      <Half><h4>{product.fields.title}</h4></Half>
       <small>{product.fields.getInTouch ? 'tbd' : money(product.fields.price, 'CAD')} / {product.fields.type}</small>
     </Flex>
     <p>{product.fields.excerpt}</p>
@@ -83,6 +87,7 @@ export class Collection extends PureComponent<Props, State> {
   public render() {
     return <>
       <h1>{this.state.collection.fields.title}</h1>
+      {rich(this.state.collection.fields.description)}
       <Products products={this.state.collection.fields.products} />
     </>
   }

@@ -16,6 +16,11 @@ const styles = breakpoints(css`
   left: 0;
   width: ${gutter*6}px;
   padding: ${gutter*2}px ${gutter}px;
+
+  span {
+    display: block;
+    margin-bottom: ${rythm/2}px;
+  }
 `, {
   portrait: css`
     position: absolute;

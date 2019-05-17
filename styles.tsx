@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Component, SFC } from 'react'
 import { Global, css } from '@emotion/core'
 
-export const font = 'Inter UI, sans-serif'
+export const font = 'Inter, sans-serif'
 
 export const colors = {
   white: 'white',
@@ -20,6 +20,30 @@ export const slow = 0.666
 
 export const GlobalStyles: SFC<{}> = props => <Global
   styles={css`
+    @font-face {
+      font-family: 'Inter';
+      src: url('https://rsms.me/inter/font-files/Inter-Regular.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Inter';
+      src: url('https://rsms.me/inter/font-files/Inter-SemiBold.woff2') format('woff2');
+      font-weight: bold;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Inter';
+      src: url('https://rsms.me/inter/font-files/Inter-Italic.woff2') format('woff2');
+      font-weight: normal;
+      font-style: italic;
+      font-display: swap;
+    }
+
     *, *:before, *:after {
       box-sizing: border-box;
     }
@@ -30,11 +54,13 @@ export const GlobalStyles: SFC<{}> = props => <Global
 
     body {
       font-family: ${font};
+      font-feature-settings: "case", "ss01";
       font-size: ${rythm}px;
       line-height: ${rythm*1.333}px;
+      letter-spacing: -0.014em;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      -webkit-tap-highlight-color: ${colors.kelly};
       
       color: ${colors.black};
       background-color: ${colors.ash};
@@ -71,7 +97,8 @@ export const GlobalStyles: SFC<{}> = props => <Global
     h1, h2, h3 {
       font-size: ${rythm*2}px;
       font-weight: bold;
-      line-height: ${rythm*2}px;
+      line-height: ${rythm*2.42}px;
+      letter-spacing: -0.022em;
     }
 
     h4, h5, h6 {
@@ -93,6 +120,12 @@ export const GlobalStyles: SFC<{}> = props => <Global
     ul, ol {
       margin: 0 0 ${rythm}px;
       padding-left: ${rythm}px;
+    }
+
+    small {
+      font-size: ${rythm/1.333}px;
+      line-height: ${rythm/1.333}px;
+      letter-spacing: -0.009em;
     }
   `}
 />
