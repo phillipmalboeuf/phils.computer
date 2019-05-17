@@ -49,7 +49,7 @@ export const GlobalStyles: SFC<{}> = props => <Global
       min-height: 88vh;
       padding: ${gutter*2}px ${gutter}px ${gutter*3.33}px;
 
-      @media all and (max-width:600px) {
+      @media all and (max-width:988px) {
         padding-top: ${gutter*3.33}px;
         padding-left: ${gutter/2}px;
       }

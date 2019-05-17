@@ -17,7 +17,7 @@ const styles = breakpoints(css`
   width: ${gutter*6}px;
   padding: ${gutter*2}px ${gutter}px;
 `, {
-  phone: css`
+  portrait: css`
     position: absolute;
     padding: ${gutter/2}px;
 
@@ -29,7 +29,7 @@ const styles = breakpoints(css`
     > nav {
       position: fixed;
       z-index: 66;
-      width: 66vw;
+      width: 50vw;
       top: 33vh;
       left: 100vw;
       padding: ${gutter/2}px;
@@ -73,7 +73,7 @@ const right = breakpoints(css`
   right: 0;
   text-align: right;
 `, {
-  phone: css`
+  portrait: css`
     position: fixed;
     z-index: 66;
     font-size: ${rythm/1.333}px;

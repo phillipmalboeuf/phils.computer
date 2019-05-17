@@ -50,8 +50,8 @@ export const brake = (point: 'big' | 'landscape' | 'portrait' | 'phone', styles:
     @media ${{
       big: 'all and (min-width:1800px)',
       landscape: 'all and (max-width:1200px)',
-      portrait: 'all and (max-width:900px)',
-      phone: 'all and (max-width:600px)'
+      portrait: 'all and (max-width:988px)',
+      phone: 'all and (max-width:666px)'
     }[point]} {
       ${styles}
     }
