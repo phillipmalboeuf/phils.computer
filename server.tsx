@@ -1,7 +1,7 @@
-import * as express from 'express'
+import express from 'express'
 import { Application, Request, Response } from 'express'
 
-import * as React from 'react'
+import React from 'react'
 import { StaticRouter } from 'react-router'
 import { renderToString } from 'react-dom/server'
 
@@ -9,10 +9,10 @@ import { renderStylesToString, extractCritical } from 'emotion-server'
 import { cache } from 'emotion'
 import { CacheProvider } from '@emotion/core'
 
-import * as cors from 'cors'
-import * as compression from 'compression'
+import cors from 'cors'
+import compression from 'compression'
 import { json, raw } from 'body-parser'
-import * as cookieparser from 'cookie-parser'
+import cookieparser from 'cookie-parser'
 
 import contentful, { entries } from './clients/contentful'
 import stripe from './clients/stripe'
