@@ -53,9 +53,7 @@ export class Main extends Component<Props, State> {
   }
 
   private async fetchContent(locale?: string) {
-    axios.get(`${process.env.NODE_ENV === 'production' ? '' : '//localhost:3000'}/content`, {
-      withCredentials: true
-    })
+    axios.get(`${process.env.NODE_ENV === 'production' ? '' : '//localhost:3000'}/content`)
       .then(response => this.setState({
         content: response.data
       }))

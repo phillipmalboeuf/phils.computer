@@ -1,11 +1,11 @@
 
 import * as React from 'react'
-import { PureComponent } from 'react'
+import { PureComponent, MouseEvent } from 'react'
 import { css } from 'emotion'
 
 import { Button, Props as ButtonProps } from './button'
 import { colors, rythm, radius } from '../styles'
-// import { Glide, Fade } from './animations'
+import { Glide, Fade, Scale } from './animations'
 
 interface Props {
   visible?: boolean
@@ -16,6 +16,10 @@ interface Props {
 }
 interface State {
   visible: boolean
+  origin?: {
+    x: number
+    y: number
+  }
 }
 
 export class Overlay extends PureComponent<Props, State> {
@@ -23,7 +27,11 @@ export class Overlay extends PureComponent<Props, State> {
   constructor(props: Props) {
     super(props)
     this.state = {
-      visible: props.visible || false
+      visible: props.visible || false,
+      origin: {
+				x: 0.5,
+				y: 0.5
+			}
     }
   }
 
@@ -31,8 +39,11 @@ export class Overlay extends PureComponent<Props, State> {
     document.documentElement.classList.remove('noscroll')
   }
 
-  public toggle() {
-    this.setState({visible: !this.state.visible})
+  public toggle(e?: MouseEvent) {
+    this.setState({visible: !this.state.visible, ...e && { origin: {
+      x: e.screenX / window.innerWidth,
+			y: e.screenY / window.innerHeight
+    } }})
     document.documentElement.classList.toggle('noscroll')
   }
 
@@ -75,8 +86,10 @@ export class Overlay extends PureComponent<Props, State> {
     container: css`
       position: relative;
       width: 100%;
-      max-width: ${rythm*33}px;
+      max-width: ${rythm*30}px;
       padding: ${rythm*2}px;
+
+      font-size: ${rythm/1.1}px;
       color: ${colors.white};
       background-color: ${colors.black};
       border: 2px solid ${colors.white};
@@ -110,15 +123,15 @@ export class Overlay extends PureComponent<Props, State> {
 
   public render() {
     return <>
-      {this.props.button && <Button {...this.props.buttonProps} onClick={()=> this.toggle()}>{this.props.button}</Button>}
+      {this.props.button && <Button {...this.props.buttonProps} onClick={e => this.toggle(e)}>{this.props.button}</Button>}
       {this.state.visible
-        ? <div className={this.styles.overlay}>
+        ? <Fade className={this.styles.overlay}>
           <button className={this.styles.back} onClick={()=> this.hide()} />
-          <div className={`${this.styles.container}${this.props.wider ? ` ${this.styles.wider}` : ''}`}>
+          <Scale origin={this.state.origin} className={`${this.styles.container}${this.props.wider ? ` ${this.styles.wider}` : ''}`}>
             <button className={this.styles.close} onClick={()=> this.hide()}>✕</button>
             {this.props.children}
-          </div>
-        </div>
+          </Scale>
+        </Fade>
         : null}
     </>
   }

@@ -9,12 +9,10 @@ import { rythm, colors, gutter, radius } from '../styles'
 import { money, rich } from '../helpers/formatters'
 
 import { ContentContext, Product, Collection as ContentCollection } from '../contexts/content'
-// import { Checkout } from '../models/checkout'
 
 import { Button } from '../components/button'
 import { Flex, breakpoints, TwoThirds, Half } from '../components/layout'
-import { Overlay } from '../components/overlay'
-import { Form, Input } from '../components/form'
+import { AddToCart } from '../components/add_to_cart'
 
 
 const box = breakpoints(css`
@@ -31,13 +29,6 @@ const box = breakpoints(css`
   `
 })
 
-const checkout = (email: string, description: string, items: {
-  title: string,
-  price: number,
-  requested_for: Date,
-  quantity: number
-}[]): any => undefined
-
 export const Products: SFC<{
   products: Entry<Product>[]
 }> = props => {
@@ -50,19 +41,7 @@ export const Products: SFC<{
     <p>{product.fields.excerpt}</p>
     {product.fields.getInTouch
       ? <Button to='mailto:phil@phils.computer' external>{product.fields.cta || 'Get in Touch'}</Button>
-      : <Overlay button={product.fields.cta || 'Add to Cart'}>
-        <h4>{product.fields.cta || 'Add to Cart'}</h4>
-        <Form id={product.sys.id} onSubmit={async values => checkout(values.email, values.description, [{
-          title: product.fields.title,
-          price: product.fields.price,
-          requested_for: new Date(),
-          quantity: values.quantity
-        }])} button='Request'>
-          <Input type='email' name='email' label='Email address' placeholder='you@your.tld' />
-          <Input type='textarea' name='description' label='Provide more information' max={280} placeholder='Describe your project, problem, idea...' />
-          <Input type='number' name='quantity' label='Quantity' />
-        </Form>
-      </Overlay>
+      : <AddToCart product={product} />
     }
   </article>)}
   </>

@@ -144,13 +144,18 @@ const input = css`
   }
 `
 
+const select = css`
+  cursor: pointer;
+`
+
 const label = css`
-  font-size: ${rythm/1.666}px;
+  font-size: ${rythm/1.42}px;
+  line-height: ${rythm/1.42}px;
   font-weight: bold;
   text-align: left;
   
   display: block;
-  margin-bottom: ${rythm/4}px;
+  margin-bottom: ${rythm/3}px;
 `
 
 export const Input: React.SFC<InputProps> = (props) => {
@@ -160,7 +165,7 @@ export const Input: React.SFC<InputProps> = (props) => {
       if (props.type === 'select') {
         return <>
           {props.label && <label className={label} htmlFor={`${context.form_id}_${props.name}`}>{props.label}</label>}
-          <select className={input} name={props.name} id={`${context.form_id}_${props.name}`}
+          <select className={[select, input].join(' ')} name={props.name} id={`${context.form_id}_${props.name}`}
             defaultValue={props.defaultValue}
             value={get(context.values, props.name) || props.value || undefined}
             disabled={props.disabled ? true : false}
@@ -175,7 +180,7 @@ export const Input: React.SFC<InputProps> = (props) => {
           {props.label && <label className={label} htmlFor={`${context.form_id}_${props.name}`}>
             <Flex spaced>
               <span>{props.label}{props.optional ? ' (Opt.)' : '' }</span>
-              {props.max && <small>{get(context.values, props.name) ? <span className={props.max - (get(context.values, props.name) as string).length < 6 ? 'red' : ''}>{props.max - (get(context.values, props.name) as string).length}</span> : props.max}</small>}
+              {props.max && <span>{get(context.values, props.name) ? <span className={props.max - (get(context.values, props.name) as string).length < 6 ? 'red' : ''}>{props.max - (get(context.values, props.name) as string).length}</span> : props.max}</span>}
             </Flex>
           </label>}
           <textarea className={input} name={props.name} id={`${context.form_id}_${props.name}`}

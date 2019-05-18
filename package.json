@@ -37,6 +37,7 @@
     "react-helmet": "^5.2.1",
     "react-router-dom": "^5.0.0",
     "react-spring": "^8.0.20",
+    "rrule": "^2.6.0",
     "stripe": "^6.31.2"
   },
   "devDependencies": {
@@ -54,6 +55,7 @@
     "@types/react-helmet": "^5.0.8",
     "@types/react-router-dom": "^4.3.3",
     "@types/stripe": "^6.25.17",
+    "@types/stripe-v3": "^3.1.0",
     "cypress": "^3.2.0",
     "nodemon": "^1.19.0",
     "now": "^15.2.0",

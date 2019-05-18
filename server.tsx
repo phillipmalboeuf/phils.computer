@@ -21,7 +21,6 @@ import { Content, ContentContext } from './contexts/content'
 import { Routes } from './routes'
 import { date } from './helpers/formatters'
 
-// import { CheckoutItem } from './models/checkout'
 import { Header } from './components/header'
 import { Footer } from './components/footer'
 import { GlobalStyles } from './styles'
@@ -72,7 +71,7 @@ server.get('/*', async (req: Request, res: Response) => {
     <html>
       <head>
         <meta name='viewport' content='width=device-width, height=device-height, initial-scale=1.0' />
-        <link rel='stylesheet' href='https://rsms.me/inter/inter.css' />
+        <link rel='icon' type='image/png' href='https://images.ctfassets.net/igsltvx7i8jl/4MyTMxMx4QayHycRvCRFZq/c74cf2550f0dec9105563dc3f3a991a6/icon.png' />
       </head>
       <body>
         <div id="main">
@@ -101,6 +100,7 @@ server.get('/*', async (req: Request, res: Response) => {
         <script dangerouslySetInnerHTML={{ __html: `window.content = ${JSON.stringify(content)}` }} />
         <script async defer src='/main.js' />
 
+        <script async defer src='https://js.stripe.com/v3/' />
         <script async defer src='https://cdn.jsdelivr.net/npm/@widgetbot/crate@3.1.237/umd/crate.min.js' dangerouslySetInnerHTML={{ __html: `
           new Crate({
             server: '578597625188712448',
