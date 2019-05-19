@@ -44,7 +44,7 @@ export class Main extends Component<Props, State> {
       })
     }
 
-    if (!location.pathname.startsWith(`/${this.state.locale}`)) {
+    if (this.state.locale && !location.pathname.startsWith(`/${this.state.locale}`)) {
       this.state.history.replace(this.state.history.location.pathname)
       process.env.NODE_ENV === 'production' && this.fetchContent(this.state.locale)
     }
