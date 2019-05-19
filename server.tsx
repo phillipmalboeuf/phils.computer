@@ -4,6 +4,7 @@ import { Application, Request, Response } from 'express'
 import React from 'react'
 import { StaticRouter } from 'react-router'
 import { renderToString } from 'react-dom/server'
+import { Helmet } from 'react-helmet'
 
 import { renderStylesToString, extractCritical } from 'emotion-server'
 import { cache } from 'emotion'
@@ -116,8 +117,13 @@ server.get('/*', async (req: Request, res: Response) => {
     </html>
   ))
 
+  const helmet = Helmet.renderStatic()
+
   res.setHeader('Cache-Control', 's-maxage=1, stale-while-revalidate')
-  res.send(`<!doctype html>${html.replace('</head>', `<style>${css}</style></head>`).replace('</body>', `<script>window.style_ids = ${JSON.stringify(ids)}</script></body>`)}`)
+  res.send(`<!doctype html>${html
+    .replace('</head>', `${helmet.title.toString()}${helmet.meta.toString()}${helmet.link.toString()}<style>${css}</style></head>`)
+    .replace('</body>', `<script>window.style_ids = ${JSON.stringify(ids)}</script></body>`)
+    .replace('<html>', `<html ${helmet.htmlAttributes.toString()}>`)}`)
 })
 
 

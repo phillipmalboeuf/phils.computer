@@ -3,7 +3,6 @@ import * as React from 'react'
 import { PureComponent } from 'react'
 import { Link, RouteComponentProps } from 'react-router-dom'
 import { ContentContext } from '../contexts/content'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { Page } from './page';
 
 

@@ -11,6 +11,7 @@ import { ContentContext, Portfolio as ContentPortfolio } from '../contexts/conte
 import { rich, date } from '../helpers/formatters'
 import { A } from '../components/text'
 import { Flex } from '../components/layout'
+import { Helm } from '../components/helm';
 
 
 interface Props extends RouteComponentProps<any> {}
@@ -62,6 +63,8 @@ export class Portfolio extends Component<Props, State> {
 
   public render() {
     return <>
+      <Helm title={this.state.portfolio.fields.title} description={this.state.portfolio.fields.excerpt} />
+
       <h1>{this.state.portfolio.fields.title}</h1>
       {rich(this.state.portfolio.fields.description)}
       {this.state.portfolio.fields.projects && this.state.portfolio.fields.projects.map(project => <article key={project.sys.id}>

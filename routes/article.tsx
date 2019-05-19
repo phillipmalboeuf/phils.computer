@@ -6,7 +6,8 @@ import { Entry } from 'contentful'
 
 import { ContentContext, Journal as ContentJournal, Article as ContentArticle } from '../contexts/content'
 import { date, rich } from '../helpers/formatters'
-import { A, Spacer } from '../components/text';
+import { A, Spacer } from '../components/text'
+import { Helm } from '../components/helm'
 
 
 interface Props extends RouteComponentProps<{ id: string, journal?: string }> {}
@@ -30,6 +31,8 @@ export class Article extends PureComponent<Props, State> {
 
   public render() {
     return <>
+      <Helm title={this.state.article.fields.title} description={this.state.article.fields.excerpt} />
+
       <h1>{this.state.article.fields.title}</h1>
       <p>{this.state.article.fields.excerpt}<br /><small>{date(this.state.article.fields.publishedDate)}</small></p>
       {rich(this.state.article.fields.body)}

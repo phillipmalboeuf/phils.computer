@@ -11,6 +11,7 @@ import { rich } from '../helpers/formatters'
 import { Big, Huge, Spacer, A } from '../components/text'
 import { Flex, Quarter, Full, Third, third, half } from '../components/layout'
 import { Products } from './collection'
+import { Helm } from '../components/helm'
 
 
 interface Props extends RouteComponentProps<any> {}
@@ -25,7 +26,8 @@ export class Page extends PureComponent<Props, State> {
   public render() {
     let page = this.context.content.pages.items.find(page => page.fields.identifier === this.props.match.params.id)
     return <>
-      {/* <h1>{page.fields.title}</h1> */}
+      <Helm title={page.fields.title} description={page.fields.excerpt} />
+      
       {rich(page.fields.body, {
         [BLOCKS.EMBEDDED_ENTRY]: node => {
           return {

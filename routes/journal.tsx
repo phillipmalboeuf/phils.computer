@@ -6,7 +6,8 @@ import { Entry } from 'contentful'
 
 import { ContentContext, Journal as ContentJournal } from '../contexts/content'
 import { date } from '../helpers/formatters'
-import { A } from '../components/text';
+import { A } from '../components/text'
+import { Helm } from '../components/helm'
 
 
 interface Props extends RouteComponentProps<any> {}
@@ -28,7 +29,8 @@ export class Journal extends PureComponent<Props, State> {
 
   public render() {
     return <>
-      {/* <h1>{this.state.journal.fields.title}</h1> */}
+      <Helm title={this.state.journal.fields.title} description={this.state.journal.fields.excerpt} />
+
       {this.state.journal.fields.articles && this.state.journal.fields.articles.map(article => <article key={article.sys.id}>
         <h2><A to={`/journals/${this.state.journal.fields.identifier}/articles/${article.fields.identifier}`}>{article.fields.title}</A></h2>
         <p>{article.fields.excerpt}<br /><small>{date(article.fields.publishedDate)}</small></p>

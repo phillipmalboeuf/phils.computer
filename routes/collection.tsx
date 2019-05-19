@@ -13,6 +13,7 @@ import { ContentContext, Product, Collection as ContentCollection } from '../con
 import { Button } from '../components/button'
 import { Flex, breakpoints, TwoThirds, Half } from '../components/layout'
 import { AddToCart } from '../components/add_to_cart'
+import { Helm } from '../components/helm'
 
 
 const box = breakpoints(css`
@@ -65,6 +66,8 @@ export class Collection extends PureComponent<Props, State> {
 
   public render() {
     return <>
+      <Helm title={this.state.collection.fields.title} description={this.state.collection.fields.excerpt} />
+
       <h1>{this.state.collection.fields.title}</h1>
       {rich(this.state.collection.fields.description)}
       <Products products={this.state.collection.fields.products} />

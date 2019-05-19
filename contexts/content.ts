@@ -46,6 +46,7 @@ export interface Project {
 export interface Portfolio {
   title: string
   identifier: string
+  excerpt: string
   description: Document
   projects: Entry<Project>[]
 }
