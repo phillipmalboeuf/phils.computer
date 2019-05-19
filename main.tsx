@@ -3,7 +3,7 @@ import * as React from 'react'
 import { Component } from 'react'
 import { render, hydrate } from 'react-dom'
 import { BrowserRouter, Router } from 'react-router-dom'
-import { createBrowserHistory, History } from 'history'
+import { createBrowserHistory, History, UnregisterCallback } from 'history'
 
 import { ContentContext, Content } from './contexts/content'
 
@@ -23,45 +23,63 @@ interface Props {
 }
 
 interface State {
-  content?: Content
+  content: Content
   locale: string
+  history: History
 }
 
 export class Main extends Component<Props, State> {
 
-  public history: History
   private previous: string
+  private listen: UnregisterCallback
 
   constructor(props: Props) {
     super(props)
+    const locale = props.locale || localStorage.getItem('locale') || undefined
     this.state = {
       content: props.content,
-      locale: props.locale || localStorage.getItem('locale') || 'en-US'
+      locale,
+      history: createBrowserHistory({
+        basename: locale
+      })
     }
 
-    this.history = createBrowserHistory()
-    this.history.listen(location => {
-      if (this.previous !== location.pathname) {
-        window.scrollTo(0, 0)
-        this.previous = location.pathname
-      }
-    })
+    if (!location.pathname.startsWith(`/${this.state.locale}`)) {
+      this.state.history.replace(this.state.history.location.pathname)
+      process.env.NODE_ENV === 'production' && this.fetchContent(this.state.locale)
+    }
   }
 
   componentDidMount() {
-    !this.state.content && process.env.NODE_ENV !== 'production' && this.fetchContent()
+    !this.state.content && process.env.NODE_ENV !== 'production' && this.fetchContent(this.state.locale)
+    this.listen = this.state.history.listen(this.scrollToTop.bind(this))
+  }
+
+  private scrollToTop(location: Location) {
+    if (this.previous !== location.pathname) {
+      window.scrollTo(0, 0)
+      this.previous = location.pathname
+    }
   }
 
   private async fetchContent(locale?: string) {
-    axios.get(`${process.env.NODE_ENV === 'production' ? '' : '//localhost:3000'}/content`)
+    axios.get(`${process.env.NODE_ENV === 'production' ? '' : '//localhost:3000'}/content${locale ? `?locale=${locale}` : ''}`)
       .then(response => this.setState({
         content: response.data
       }))
   }
 
   private selectLocale(locale: string) {
-    localStorage.setItem('locale', locale)
-    this.setState({ locale })
+    locale === 'en-US' ? localStorage.removeItem('locale') : localStorage.setItem('locale', locale)
+    const history =createBrowserHistory({
+      basename: locale
+    })
+    history.replace(this.state.history.location.pathname)
+  
+    this.setState({
+      locale,
+      history
+    }) 
     this.fetchContent(locale)
   }
 
@@ -71,10 +89,10 @@ export class Main extends Component<Props, State> {
       ? <ContentContext.Provider value={{
         content: this.state.content,
         fetchContent: this.fetchContent.bind(this),
-        locale: this.state.locale || 'en-US',
+        locale: this.state.locale,
         selectLocale: this.selectLocale.bind(this)
       }}>
-        <Router history={this.history}>
+        <Router key={this.state.locale} history={this.state.history}>
           <>
           <Header />
           <main><Routes /></main>

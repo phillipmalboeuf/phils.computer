@@ -8,6 +8,8 @@
   ],
   "routes": [
     { "src": "/main.js", "dest": "dist/main.js" },
+    { "src": "/en-US/(.*)", "dest": "dist/server.js?locale=en-US" },
+    { "src": "/fr-CA/(.*)", "dest": "dist/server.js?locale=fr-CA" },
     { "src": "/(.*)", "dest": "dist/server.js" }
   ],
   "env": {

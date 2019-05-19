@@ -6,7 +6,7 @@
   "scripts": {
     "start": "now dev",
     "dev": "parcel index.html -p 8080 --open",
-    "dev:server": "parcel watch server.tsx --target=node --out-file=server.js --bundle-node-modules | env $(cat .env) nodemon dist/server.js",
+    "dev:server": "parcel watch server.tsx --target=node --out-file=server.js | env $(cat .env) nodemon dist/server.js",
     "build": "tsc server.tsx --jsx react --outDir dist --esModuleInterop | parcel build main.tsx --experimental-scope-hoisting",
     "build:main": "parcel build main.tsx --experimental-scope-hoisting",
     "test": "cypress run",

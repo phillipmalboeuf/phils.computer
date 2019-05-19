@@ -93,7 +93,7 @@ export const Header: SFC<{}> = props => {
         <Navigation links={content.header.fields.links} />
       </header>
       <header className={[styles, right].join(' ')}>
-        <A current={locale === 'en-US'} onClick={e => selectLocale('en-US')}>En</A> <A current={locale === 'fr-CA'} onClick={e => selectLocale('fr-CA')}>Fr</A>
+        <A current={locale === undefined || locale === 'en-US'} onClick={e => selectLocale('en-US')}>En</A> <A current={locale === 'fr-CA'} onClick={e => selectLocale('fr-CA')}>Fr</A>
       </header>
     </>}
   </ContentContext.Consumer>

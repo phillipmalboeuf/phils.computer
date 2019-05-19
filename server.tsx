@@ -35,7 +35,7 @@ server.use(cookieparser(process.env.SECRET))
 server.use(compression())
 
 server.get('/content', (req: Request, res: Response) => {
-  entries(req.cookies['locale'] || 'en-US').then(entries => res.send(entries))
+  entries(req.query['locale'] || 'en-US').then(entries => res.send(entries))
 })
 
 server.post('/checkout', json(), async (req: Request, res: Response)=> {
@@ -57,15 +57,15 @@ server.post('/checkout', json(), async (req: Request, res: Response)=> {
       quantity: item.quantity,
       description: `Booking request for ${date(item.requested_for)}`
     })),
-    locale: (req.cookies['locale'] || 'en-US').split('-')[0]
+    locale: (req.query['locale'] || 'en-US').split('-')[0]
   })
   
   res.json(session)
 })
 
 server.get('/*', async (req: Request, res: Response) => {
-  const locale = req.cookies['locale'] || 'en-US'
-  const content = await entries(locale)
+  const locale = req.query['locale'] as string || undefined
+  const content = await entries(locale || 'en-US')
 
   const { html, ids, css } = extractCritical(renderToString(
     <html>
@@ -82,7 +82,7 @@ server.get('/*', async (req: Request, res: Response) => {
               locale,
               selectLocale: undefined
             }}>
-              <StaticRouter location={req.originalUrl} context={{}}>
+              <StaticRouter basename={locale} location={req.originalUrl} context={{}}>
                 <>
                   <Header />
                   <main>
@@ -96,7 +96,7 @@ server.get('/*', async (req: Request, res: Response) => {
           </CacheProvider>
         </div>
 
-        <script dangerouslySetInnerHTML={{ __html: `window.locale = "${locale}"` }} />
+        {locale && <script dangerouslySetInnerHTML={{ __html: `window.locale = "${locale}"` }} />}
         <script dangerouslySetInnerHTML={{ __html: `window.content = ${JSON.stringify(content)}` }} />
         <script async defer src='/main.js' />
 
@@ -116,7 +116,7 @@ server.get('/*', async (req: Request, res: Response) => {
     </html>
   ))
 
-  res.setHeader('Cache-Control', 's-maxage=10, stale-while-revalidate')
+  res.setHeader('Cache-Control', 's-maxage=1, stale-while-revalidate')
   res.send(`<!doctype html>${html.replace('</head>', `<style>${css}</style></head>`).replace('</body>', `<script>window.style_ids = ${JSON.stringify(ids)}</script></body>`)}`)
 })
 
