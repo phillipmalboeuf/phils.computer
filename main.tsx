@@ -31,7 +31,7 @@ interface State {
 export class Main extends Component<Props, State> {
 
   private previous: string
-  private listen: UnregisterCallback
+  private unlisten: UnregisterCallback
 
   constructor(props: Props) {
     super(props)
@@ -52,7 +52,7 @@ export class Main extends Component<Props, State> {
 
   componentDidMount() {
     !this.state.content && process.env.NODE_ENV !== 'production' && this.fetchContent(this.state.locale)
-    this.listen = this.state.history.listen(this.scrollToTop.bind(this))
+    this.unlisten = this.state.history.listen(this.scrollToTop.bind(this))
   }
 
   private scrollToTop(location: Location) {
@@ -75,6 +75,8 @@ export class Main extends Component<Props, State> {
       basename: locale
     })
     history.replace(this.state.history.location.pathname)
+    this.unlisten()
+    this.unlisten = history.listen(this.scrollToTop.bind(this))
   
     this.setState({
       locale,
