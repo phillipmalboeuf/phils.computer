@@ -6,6 +6,7 @@ import { css } from 'emotion'
 import { Button, Props as ButtonProps } from './button'
 import { colors, rythm, radius } from '../styles'
 import { Glide, Fade, Scale } from './animations'
+import { breakpoints } from './layout';
 
 interface Props {
   visible?: boolean
@@ -54,7 +55,7 @@ export class Overlay extends PureComponent<Props, State> {
   }
 
   public styles = {
-    overlay: css`
+    overlay: breakpoints(css`
       display: flex;
       justify-content: center;
       align-items: center;
@@ -67,7 +68,11 @@ export class Overlay extends PureComponent<Props, State> {
       width: 100vw;
       height: 100vh;
       overflow-y: auto;
-    `,
+    `, {
+      portrait: css`
+        align-items: flex-start;
+      `
+    }),
     back: css`
       position: relative;
       display: inline-block;
