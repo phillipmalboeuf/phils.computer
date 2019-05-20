@@ -13,7 +13,7 @@ export const Helm: SFC<{
       defaultTitle={content.header.fields.title}
       titleTemplate={`${content.header.fields.title} – %s`}
     >
-      <html lang={locale ? locale.split('–')[0] : 'en'} />
+      <html lang={locale ? locale.split('-')[0] : 'en'} />
       {['en-US', 'fr-CA'].filter(locale => locale !== locale).map(locale => <link rel='alternate' href={`${process.env.REDIRECT_ROOT}/${locale}`} hrefLang={locale} key={locale}/>)}
       <title>{props.title}</title>
       {props.description && <meta name='description' content={props.description} />}
