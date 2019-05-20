@@ -6,7 +6,7 @@ Fluent in French and English, currently based in Montréal, Canada
 
 ## Experience
 
-I'm a full-stack developer, proficient with the full spectrum of the development process, starting with user experience research and design, to front-end development with both classic HTML/Sass and React with styled-components, to back-end development in either Node.js or Python, notwithstanding mobile development with React Native or Flutter, and finally managing both  MongoDB and PostgreSQL databases. Most of my work is in the ecommerce domain, where I've gained extensive experience with Shopify and Stripe/Braintree custom integrations.
+I'm a full-stack developer, proficient with the full spectrum of the development process, starting with user experience research and design, to front-end development with both HTML/Sass and React with styled-components, to back-end development in either Node.js or Python, passing by mobile development with React Native or Flutter, and finally managing both MongoDB and PostgreSQL databases. Most of my work is in the ecommerce domain, where I've gained extensive experience with Shopify and Stripe/Braintree custom integrations.
 
 And yet today, there's still plenty more for me to learn :)
 
