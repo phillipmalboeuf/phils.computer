@@ -35,7 +35,7 @@ export class Article extends PureComponent<Props, State> {
       <Helm title={article.fields.title} description={article.fields.excerpt} />
 
       <h1>{article.fields.title}</h1>
-      <p>{article.fields.excerpt}<br /><small>{date(article.fields.publishedDate)}{article.fields.ongoing && <> – Ongoing</>}</small></p>
+      <p>{article.fields.excerpt}<br /><small>{date(article.fields.publishedDate, undefined, undefined, this.context.locale)}{article.fields.ongoing && (this.context.locale === 'fr-CA' ? <> – En continue</> : <> – Ongoing</>)}</small></p>
       <article>{rich(article.fields.body)}</article>
       <Spacer />
       {journal && <A to={`/journals/${journal.fields.identifier}`}>← Back to {journal.fields.title}</A>}

@@ -72,7 +72,7 @@ export class Portfolio extends Component<Props, State> {
           <figure className={this.styles.banner} style={{ backgroundColor: project.fields.color }}>
             <img className={this.styles.logo} src={project.fields.logo.fields.file.url} alt={project.fields.logo.fields.title} />
             <figcaption className={this.styles.caption}>
-              {project.fields.comingSoon ? <>Coming Soon</> : date(project.fields.releasedDate, false, true)}
+            {project.fields.comingSoon ? (this.context.locale === 'fr-CA' ? <>Bientôt</> : <>Coming Soon</>) : date(project.fields.releasedDate, false, true, this.context.locale)}
             </figcaption>
           </figure>
         </A>}

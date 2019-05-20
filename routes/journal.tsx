@@ -33,7 +33,7 @@ export class Journal extends PureComponent<Props, State> {
 
       {this.state.journal.fields.articles && this.state.journal.fields.articles.map(article => <article key={article.sys.id}>
         <h2><A to={`/journals/${this.state.journal.fields.identifier}/articles/${article.fields.identifier}`}>{article.fields.title}</A></h2>
-        <p>{article.fields.excerpt}<br /><small>{date(article.fields.publishedDate)}{article.fields.ongoing && <> – Ongoing</>}</small></p>
+        <p>{article.fields.excerpt}<br /><small>{date(article.fields.publishedDate, undefined, undefined, this.context.locale)}{article.fields.ongoing && <> – Ongoing</>}</small></p>
       </article>)}
     </>
   }

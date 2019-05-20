@@ -4,10 +4,10 @@ import { Document, BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types'
 
 import { A } from '../components/text'
 
-export const date = (value: string | Date, time=true, month=false, lang='en') =>
+export const date = (value: string | Date, time=true, month=false, locale='en-US') =>
   value !== undefined && value !== null ? new Date(value)
     .toLocaleDateString(
-      lang === 'fr' ? 'fr-CA' : 'en-us',
+      locale,
       {
         year: 'numeric',
         month: 'long',
