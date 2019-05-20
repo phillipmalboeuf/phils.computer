@@ -30,14 +30,15 @@ export class Article extends PureComponent<Props, State> {
   }
 
   public render() {
+    const { article, journal } = this.state
     return <>
-      <Helm title={this.state.article.fields.title} description={this.state.article.fields.excerpt} />
+      <Helm title={article.fields.title} description={article.fields.excerpt} />
 
-      <h1>{this.state.article.fields.title}</h1>
-      <p>{this.state.article.fields.excerpt}<br /><small>{date(this.state.article.fields.publishedDate)}</small></p>
-      {rich(this.state.article.fields.body)}
+      <h1>{article.fields.title}</h1>
+      <p>{article.fields.excerpt}<br /><small>{date(article.fields.publishedDate)}{article.fields.ongoing && <> – Ongoing</>}</small></p>
+      <article>{rich(article.fields.body)}</article>
       <Spacer />
-      {this.state.journal && <A to={`/journals/${this.state.journal.fields.identifier}`}>← Back to {this.state.journal.fields.title}</A>}
+      {journal && <A to={`/journals/${journal.fields.identifier}`}>← Back to {journal.fields.title}</A>}
     </>
   }
 }

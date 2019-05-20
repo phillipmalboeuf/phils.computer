@@ -22,6 +22,11 @@ const underline = css`
   background-repeat: no-repeat;
   background-size: 100% .66em;
   background-position: left 0 bottom -66.6%;
+
+  article & {
+    background: none;
+    text-decoration: underline;
+  }
 `
 
 const current = css`

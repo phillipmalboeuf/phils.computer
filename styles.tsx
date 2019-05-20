@@ -99,6 +99,12 @@ export const GlobalStyles: SFC<{}> = props => <Global
       font-weight: bold;
       line-height: ${rythm*2.42}px;
       letter-spacing: -0.022em;
+
+      p + &,
+      ul + &,
+      ol + & {
+        margin-top: ${rythm*2}px;
+      }
     }
 
     h4, h5, h6 {
@@ -126,6 +132,19 @@ export const GlobalStyles: SFC<{}> = props => <Global
       font-size: ${rythm/1.333}px;
       line-height: ${rythm/1.333}px;
       letter-spacing: -0.009em;
+    }
+
+    code {
+      font-family: monospace;
+      font-size: ${rythm/1.2}px;
+      line-height: ${rythm}px;
+      white-space: pre;
+      
+      &:first-of-type:last-of-type {
+        display: inline-block;
+        max-width: 88vw;
+        overflow-x: auto;
+      }
     }
   `}
 />

@@ -56,6 +56,7 @@ export interface Article {
   identifier: string
   excerpt: string
   publishedDate: Date
+  ongoing: boolean
   body: Document
 }
 
