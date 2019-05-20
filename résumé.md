@@ -2,12 +2,11 @@
 
 [phils.computer](https://phils.computer) – [phil@phils.computer](mailto:phil@phils.computer) – [@phillipmalboeuf](https://twitter.com/phillipmalboeuf) - [github.com/phillipmalboeuf](https://github.com/phillipmalboeuf)
 
-Fluent in French and English
-Currently based in Montréal, Canada
+Fluent in French and English, currently based in Montréal, Canada
 
 ## Experience
 
-I'm a full-stack developer, proficient with the full spectrum of the development process, starting from user experience research and design, to front-end development with both classic HTML/Sass and React with styled-components, to back-end development in either Node.js or Python, notwithstanding mobile development with React Native or Flutter, and finally managing both  MongoDB and PostgreSQL databases. Most of my work is in the ecommerce domain, where I've built extensive experience with Shopify and Stripe/Braintree custom integrations.
+I'm a full-stack developer, proficient with the full spectrum of the development process, starting with user experience research and design, to front-end development with both classic HTML/Sass and React with styled-components, to back-end development in either Node.js or Python, notwithstanding mobile development with React Native or Flutter, and finally managing both  MongoDB and PostgreSQL databases. Most of my work is in the ecommerce domain, where I've built extensive experience with Shopify and Stripe/Braintree custom integrations.
 
 And today yet, there's still plenty more for me to learn :)
 

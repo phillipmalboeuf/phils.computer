@@ -1,7 +1,7 @@
 {
   "version": 2,
   "name": "phils.computer",
-  "alias": "now.phils.computer",
+  "alias": "phils.computer",
   "builds": [
     { "src": "dist/main.js", "use": "@now/static" },
     { "src": "dist/server.js", "use": "@now/node-server@canary" }
