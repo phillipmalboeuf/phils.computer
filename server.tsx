@@ -71,6 +71,7 @@ server.get('/*', async (req: Request, res: Response) => {
   const { html, ids, css } = extractCritical(renderToString(
     <html>
       <head>
+        <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
         <meta name='viewport' content='width=device-width, height=device-height, initial-scale=1.0' />
         <link rel='icon' type='image/png' href='https://images.ctfassets.net/igsltvx7i8jl/4MyTMxMx4QayHycRvCRFZq/c74cf2550f0dec9105563dc3f3a991a6/icon.png' />
       </head>
