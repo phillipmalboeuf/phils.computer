@@ -41,6 +41,7 @@ export interface Project {
   description: Document
   logo: Asset
   color: string
+  comingSoon: boolean
 }
 
 export interface Portfolio {

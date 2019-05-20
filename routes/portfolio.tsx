@@ -11,7 +11,7 @@ import { ContentContext, Portfolio as ContentPortfolio } from '../contexts/conte
 import { rich, date } from '../helpers/formatters'
 import { A } from '../components/text'
 import { Flex } from '../components/layout'
-import { Helm } from '../components/helm';
+import { Helm } from '../components/helm'
 
 
 interface Props extends RouteComponentProps<any> {}
@@ -72,7 +72,7 @@ export class Portfolio extends Component<Props, State> {
           <figure className={this.styles.banner} style={{ backgroundColor: project.fields.color }}>
             <img className={this.styles.logo} src={project.fields.logo.fields.file.url} alt={project.fields.logo.fields.title} />
             <figcaption className={this.styles.caption}>
-              {date(project.fields.releasedDate, false, true)}
+              {project.fields.comingSoon ? <>Coming Soon</> : date(project.fields.releasedDate, false, true)}
             </figcaption>
           </figure>
         </A>}
