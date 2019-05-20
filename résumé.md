@@ -14,9 +14,15 @@ And today yet, there's still plenty more for me to learn :)
 
 _2012 - Present_
 
-To freelance had always been the dream for me. I'm able to give much of myself to my fellow aspiring business owners. Wether they're artists, designers, developers, or entrepreneurs, I'm happy for the opportunity to offer them what they need on the Web.
+To freelance had always been a dream of mine. I'm able to give plenty of myself to my fellow aspiring business owners. Wether they're artists, designers, developers, or entrepreneurs, I'm happy for the opportunity to offer them what they need on the Web.
 
-The hub I built for my freelance practice lives here: [phils.computer](https://phils.computer)
+The hub I built for my freelance practice lives here: [phils.computer](https://phils.computer) and here's a list of current clients you may contact to ask about me:
+
+- Chrissy from [Dispatch Coffee](https://dispatch.apps.phils.computer/) at chrissy@dispatchcoffee.ca
+- Charles from [Unsplash](https://unsplash.com/) at charlesdeluvio@gmail.com
+- Alex or Caro from [Rachel](https://en.fromrachel.com/) at alex@fromrachel.com
+- Gabriel or Rachel from [Ethos](https://www.behance.net/ethosmtl) at glefebvre@ethosmtl.com
+- Laurent from [Bombom](https://bombombaby.com/) at laurent@bombombaby.com
 
 
 ### Mobile Web Developer, Frank and Oak
