@@ -3,6 +3,7 @@ import { documentToReactComponents, Options, RenderNode } from '@contentful/rich
 import { Document, BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types'
 
 import { A } from '../components/text'
+import { Code } from '../components/code'
 
 export const date = (value: string | Date, time=true, month=false, locale='en-US') =>
   value !== undefined && value !== null ? new Date(value)
@@ -26,6 +27,9 @@ export const money = (value: number, currency?: string) =>
 
 export const rich = (value: Document, render?: RenderNode) => documentToReactComponents(value, {
   renderNode: {
+    [BLOCKS.QUOTE]: (node, children)=> {
+      return <Code>{children}</Code>
+    },
     [INLINES.HYPERLINK]: (node, children)=> {
       return <A to={node.data.uri} underline external>{children}</A>
     },

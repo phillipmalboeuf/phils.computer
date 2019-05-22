@@ -6,7 +6,7 @@
   "scripts": {
     "start": "now dev",
     "dev": "parcel index.html -p 8080 --open",
-    "dev:server": "parcel watch server.tsx --target=node --out-file=server.js | env $(cat .env) nodemon dist/server.js",
+    "dev:server": "parcel watch server.tsx --target=node --out-file=server.js --no-cache | env $(cat .env) nodemon dist/server.js",
     "build": "tsc server.tsx --jsx react --outDir dist --esModuleInterop | parcel build main.tsx --experimental-scope-hoisting",
     "build:main": "parcel build main.tsx --experimental-scope-hoisting",
     "test": "cypress run",
@@ -31,6 +31,7 @@
     "morgan": "^1.9.1",
     "nconf": "^0.10.0",
     "object-path": "^0.11.4",
+    "prismjs": "^1.16.0",
     "query-string": "^6.5.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -50,6 +51,7 @@
     "@types/morgan": "^1.7.35",
     "@types/nconf": "^0.10.0",
     "@types/object-path": "^0.11.0",
+    "@types/prismjs": "^1.16.0",
     "@types/react": "^16.8.16",
     "@types/react-dom": "^16.8.4",
     "@types/react-helmet": "^5.0.8",
@@ -58,7 +60,7 @@
     "@types/stripe-v3": "^3.1.0",
     "cypress": "^3.2.0",
     "nodemon": "^1.19.0",
-    "now": "^15.2.0",
+    "now": "^15.3.0",
     "parcel-bundler": "^1.12.3",
     "typescript": "^3.5.0-dev.20190508"
   }

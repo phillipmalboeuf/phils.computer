@@ -134,17 +134,12 @@ export const GlobalStyles: SFC<{}> = props => <Global
       letter-spacing: -0.009em;
     }
 
-    code {
+    code,
+    pre {
       font-family: monospace;
       font-size: ${rythm/1.2}px;
       line-height: ${rythm}px;
       white-space: pre;
-      
-      &:first-of-type:last-of-type {
-        display: inline-block;
-        max-width: 88vw;
-        overflow-x: auto;
-      }
     }
   `}
 />

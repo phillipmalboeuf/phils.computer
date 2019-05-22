@@ -6,9 +6,6 @@ import { ContentContext } from '../contexts/content'
 import { css } from 'emotion'
 import { rythm, colors, gutter, radius } from '../styles'
 
-import { Navigation } from './navigation'
-import { A, Big, Medium } from './text'
-
 const styles = css`
   cursor: pointer;
   outline: none;
