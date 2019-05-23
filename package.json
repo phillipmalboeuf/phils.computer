@@ -11,7 +11,7 @@
     "build:main": "parcel build main.tsx --experimental-scope-hoisting",
     "test": "cypress run",
     "test:open": "cypress open",
-    "now": "cypress run && now && now alias"
+    "now": "npm run build && now --target production"
   },
   "author": "Phillip Malboeuf <phil@phils.computer>",
   "license": "ISC",
