@@ -30,7 +30,7 @@ export class Navigation extends PureComponent<Props, State> {
           to={`/${link.fields.internalLink.sys.contentType.sys.id}s/${link.fields.internalLink.fields.identifier}`}>
           {link.fields.label}
         </A>}
-        {link.fields.externalLink && <A to={link.fields.externalLink} external>
+        {link.fields.externalLink && <A to={link.fields.externalLink} external rel='me'>
           {link.fields.label}
         </A>}
         <br />

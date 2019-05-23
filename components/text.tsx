@@ -36,6 +36,7 @@ const current = css`
 export const A: SFC<{
   to?: string
   external?: boolean
+  rel?: string
   underline?: boolean
   current?: boolean
   onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void
@@ -46,7 +47,7 @@ export const A: SFC<{
     props.onClick && props.onClick(e)
   }
   return props.to ? props.external
-  ? <a className={className} href={props.to} target='_blank'>
+  ? <a className={className} href={props.to} target='_blank' rel={props.rel}>
     {props.children}
   </a>
   : <NavLink onClick={onClick} activeClassName={current} className={className} to={props.to}>
