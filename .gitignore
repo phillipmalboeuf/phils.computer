@@ -1,7 +1,6 @@
 /node_modules
 /.cache
-dist
+/dist
 /_ignore
 npm-debug.log
-secret.json
 .env

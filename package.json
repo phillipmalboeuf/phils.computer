@@ -1,67 +1,34 @@
 {
   "name": "phils.computer",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
+  "engines": {
+    "node": "10"
+  },
+  "browserslist": [
+    "last 1 chrome version"
+  ],
   "main": "index.js",
   "scripts": {
-    "start": "now dev",
-    "dev": "parcel index.html -p 8080 --open",
-    "dev:server": "parcel watch server.tsx --target=node --out-file=server.js --no-cache | env $(cat .env) nodemon dist/server.js",
-    "build": "tsc server.tsx --jsx react --outDir dist --esModuleInterop | parcel build main.tsx --experimental-scope-hoisting",
-    "build:main": "parcel build main.tsx --experimental-scope-hoisting",
-    "test": "cypress run",
-    "test:open": "cypress open",
-    "now": "npm run build && now --target production"
+    "dev": "parcel index.html -p 8888 --open --no-cache",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Phillip Malboeuf <phil@phils.computer>",
   "license": "ISC",
-  "dependencies": {
-    "@contentful/rich-text-react-renderer": "^13.2.0",
-    "@emotion/core": "^10.0.10",
-    "agenda": "^2.0.2",
-    "axios": "^0.18.0",
-    "body-parser": "^1.19.0",
-    "compression": "^1.7.4",
-    "contentful": "^7.5.1",
-    "cookie-parser": "^1.4.4",
-    "cors": "^2.8.5",
-    "emotion": "^10.0.9",
-    "emotion-server": "^10.0.9",
-    "express": "^4.16.4",
-    "morgan": "^1.9.1",
-    "nconf": "^0.10.0",
-    "object-path": "^0.11.4",
-    "prismjs": "^1.16.0",
-    "query-string": "^6.5.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-helmet": "^5.2.1",
-    "react-router-dom": "^5.0.0",
-    "react-spring": "^8.0.20",
-    "rrule": "^2.6.0",
-    "stripe": "^6.31.2"
-  },
   "devDependencies": {
-    "@types/agenda": "^2.0.4",
-    "@types/body-parser": "^1.17.0",
-    "@types/compression": "0.0.36",
-    "@types/cookie-parser": "^1.4.1",
-    "@types/cors": "^2.8.5",
-    "@types/express": "^4.16.1",
-    "@types/morgan": "^1.7.35",
-    "@types/nconf": "^0.10.0",
-    "@types/object-path": "^0.11.0",
-    "@types/prismjs": "^1.16.0",
-    "@types/react": "^16.8.16",
-    "@types/react-dom": "^16.8.4",
-    "@types/react-helmet": "^5.0.8",
-    "@types/react-router-dom": "^4.3.3",
-    "@types/stripe": "^6.25.17",
-    "@types/stripe-v3": "^3.1.0",
-    "cypress": "^3.2.0",
-    "nodemon": "^1.19.0",
     "now": "^15.3.0",
     "parcel-bundler": "^1.12.3",
-    "typescript": "^3.5.0-dev.20190508"
+    "parcel-plugin-svelte": "file:./plugin",
+    "svelte": "^3.4.2",
+    "svelte-routing": "^1.1.1",
+    "typescript": "^3.4.5"
+  },
+  "dependencies": {
+    "@contentful/rich-text-html-renderer": "^13.1.0",
+    "contentful": "^7.6.0",
+    "prismjs": "^1.16.0",
+    "rrule": "^2.6.0",
+    "stores": "^1.0.0",
+    "stripe": "^7.1.0"
   }
 }
