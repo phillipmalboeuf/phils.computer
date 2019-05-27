@@ -1,5 +1,5 @@
 <script>
-  import { link } from 'svelte-routing'
+  import { Link } from 'svelte-routing'
 
   export let to = ''
   export let external = false
@@ -7,8 +7,8 @@
   export let underline = false
   export let current = false
 
-  function getProps({ location, href, isPartiallyCurrent, isCurrent }) {
-    return isPartiallyCurrent ? { class: "current" } : {}
+  function onClick() {
+    window.scrollTo(0, 0)
   }
 </script>
 
@@ -25,7 +25,7 @@
     text-decoration: underline;
   }
 
-  .current {
+  :global(a[aria-current]) {
     font-weight: bold;
   }
 </style>
@@ -35,7 +35,7 @@
   <slot />
 </a>
 {:else}
-<a href="{to}" use:link to="{to}" class:underline class:current>
+<Link to="{to}" on:click={onClick}>
   <slot />
-</a>
+</Link>
 {/if}

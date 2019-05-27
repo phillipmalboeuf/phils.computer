@@ -60,7 +60,7 @@
 </a>
 {/if}
 {:else}
-<button type={submit ? 'submit' : 'button'} disabled={disabled} class:full>
+<button type={submit ? 'submit' : 'button'} disabled={disabled} class:full on:click|preventDefault={onClick}>
   <slot />
 </button>
 {/if}
