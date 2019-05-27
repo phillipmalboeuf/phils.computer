@@ -1,5 +1,5 @@
 <script>
-  import { Link } from 'svelte-routing'
+  import { link } from 'svelte-routing'
 
   export let to = ''
   export let external = false
@@ -13,20 +13,19 @@
 </script>
 
 <style>
-  :hover,
-  :focus {
-    top: -1px;
-  }
-
-  :active {
-    top: 0px;
-  }
-
   .underline {
+    background-image: linear-gradient(var(--kelly), var(--kelly));
+    background-repeat: no-repeat;
+    background-size: 100% .66em;
+    background-position: left 0 bottom -66.6%;
+  }
+
+  :global(article) .underline {
+    background: none;
     text-decoration: underline;
   }
 
-  :global(a.current) {
+  .current {
     font-weight: bold;
   }
 </style>
@@ -36,7 +35,7 @@
   <slot />
 </a>
 {:else}
-<Link to="{to}" getProps={getProps}>
-  <span class:underline><slot /></span>
-</Link>
+<a href="{to}" use:link to="{to}" class:underline class:current>
+  <slot />
+</a>
 {/if}

@@ -29,8 +29,8 @@ export const rich = (value: Document, render?: RenderNode) => documentToHtmlStri
     // [INLINES.HYPERLINK]: (node, children)=> {
     //   return <A to={node.data.uri} underline external>{children}</A>
     // },
-    // [INLINES.ENTRY_HYPERLINK]: (node, children)=> {
-    //   return <A to={`/${node.data.target.sys.contentType.sys.id}s/${node.data.target.fields.identifier}`} underline>{children}</A>
+    // [INLINES.ENTRY_HYPERLINK]: (node, next)=> {
+    //   return `<a href="/${node.data.target.sys.contentType.sys.id}s/${node.data.target.fields.identifier}" class="underline">${next(node.content)}</a>`
     // },
     ...render
   }

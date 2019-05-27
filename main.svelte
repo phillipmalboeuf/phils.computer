@@ -7,6 +7,10 @@
   import Header from './components/header'
   import Footer from './components/footer'
 
+  import Article from './routes/article'
+  import Journal from './routes/journal'
+  import Collection from './routes/collection'
+  import Portfolio from './routes/portfolio'
   import Page from './routes/page'
   import Home from './routes/home'
 
@@ -20,6 +24,10 @@
 <Router url="{url}">
   <Header />
   <main>
+    <Route path="journals/:journal_id/articles/:id" component="{Article}" />
+    <Route path="journals/:id" component="{Journal}" />
+    <Route path="collections/:id" component="{Collection}" />
+    <Route path="portfolios/:id" component="{Portfolio}" />
     <Route path="pages/:id" component="{Page}" />
     <Route path="/"><Home /></Route>
   </main>

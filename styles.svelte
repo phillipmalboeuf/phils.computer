@@ -12,6 +12,7 @@
 
     --rythm: 20px;
     --gutter: calc(var(--rythm)*1.666);
+    --radius: 3px;
   }
 
   :global(html) {
