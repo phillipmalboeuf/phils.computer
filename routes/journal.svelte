@@ -13,7 +13,7 @@
   <h2><A to={`/journals/${journal.fields.identifier}/articles/${article.fields.identifier}`}>{article.fields.title}</A></h2>
   <p>
     {article.fields.excerpt}<br />
-    <small>{date(article.fields.publishedDate, undefined, undefined, $locale)}{article.fields.ongoing && ($locale === 'fr-CA' ? ' – En continue' : ' – Ongoing')}</small>
+    <small>{date(article.fields.publishedDate, undefined, undefined, $locale)}{article.fields.ongoing ? ($locale === 'fr-CA' ? ' – En continue' : ' – Ongoing') : ''}</small>
   </p>
 </article>
 {/each}
