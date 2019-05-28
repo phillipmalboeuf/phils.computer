@@ -64,6 +64,12 @@
     letter-spacing: -0.022em;
   }
 
+  :global(p + h1, p + h2, p + h3,
+  ul + h1, ul + h2, ul + h3,
+  ol + h1, ol + h2, ol + h3) {
+    margin-top: calc(var(--rythm)*2);
+  }
+
   :global(h4, h5, h6) {
     font-size: var(--rythm);
     font-weight: bold;
@@ -96,7 +102,7 @@
 
   :global(code, pre) {
     font-family: monospace;
-    font-size: var(--rythm);
+    font-size: calc(var(--rythm)/1.2);
     line-height: 1;
     white-space: pre;
   }

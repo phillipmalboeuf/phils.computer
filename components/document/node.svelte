@@ -4,6 +4,7 @@
   import A from '../a'
   import Flex from '../flex'
   import Document from './'
+  import Code from '../code'
   import Products from '../products'
 
   export let node
@@ -18,11 +19,12 @@
 {:else if node.nodeType === 'paragraph'}
   <p>{#each node.content as mark}<Mark mark={mark} />{/each}</p>
 {:else if node.nodeType === 'unordered-list'}
-<ul>
-  {#each node.content as item}<li>{#each item.content as node}<svelte:self node={node} />{/each}</li>{/each}
-</ul>
+  <ul>
+    {#each node.content as item}<li>{#each item.content as node}<svelte:self node={node} />{/each}</li>{/each}
+  </ul>
 {:else if node.nodeType === 'blockquote'}
-<pre>{#each node.content as code}<svelte:self node={code} />{/each}</pre>
+  <Code>{#each node.content as code}<svelte:self node={code} />{/each}</Code>
+
 {:else if node.nodeType === 'embedded-entry-block'}
   {#if node.data.target.sys.contentType.sys.id === 'collection'}
   <Products products={node.data.target.fields.products} />
