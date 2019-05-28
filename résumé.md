@@ -95,7 +95,7 @@ I worked multiple co-op placements with the Interactive Learning Products team a
 - Dart
 - Flutter
 - RRule
-- Sass
+- CSS/Sass
 - Styled-components
 - Zeit Now
 - Dokku
