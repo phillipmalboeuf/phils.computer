@@ -3,6 +3,9 @@
   
   import A from './a'
   import Navigation from './navigation'
+  import Menu from './menu'
+
+  let width = 999
 </script>
 
 <style>
@@ -36,9 +39,15 @@
   }
 </style>
 
+<svelte:window bind:innerWidth={width} />
+
 <header>
   <h1><A to='/'>{$content.header.fields.title}</A></h1>
+  {#if width > 988}
   <Navigation links={$content.header.fields.links} />
+  {:else}
+  <Menu links={$content.header.fields.links} />
+  {/if}
 </header>
 
 <header class='right'>
