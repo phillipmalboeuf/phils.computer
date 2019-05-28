@@ -13,6 +13,11 @@
     --rythm: 20px;
     --gutter: calc(var(--rythm)*1.666);
     --radius: 3px;
+
+    --big: 1888px;
+    --landscape: 1242px;
+    --portrait: 988px;
+    --phone: 666px;
   }
 
   :global(html) {
@@ -42,6 +47,13 @@
     min-height: 88vh;
     padding: var(--gutter);
     padding: calc(var(--gutter)*2) calc(var(--gutter)) calc(var(--gutter)*3.33);
+  }
+
+  @media all and (max-width:988px) {
+    :global(main) {
+      padding-top: calc(var(--gutter)*3.33);
+      padding-left: calc(var(--gutter)/2);
+    }
   }
 
   :global(article) {

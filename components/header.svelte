@@ -14,10 +14,25 @@
     padding: calc(var(--gutter)*2) var(--gutter);
   }
 
+  h1 {
+    margin-bottom: calc(var(--rythm)/2);
+  }
+
   header.right {
     left: auto;
     right: 0;
     text-align: right;
+  }
+
+  @media all and (max-width:988px) {
+    header {
+      position: absolute;
+      padding: calc(var(--gutter)/2);
+    }
+
+    h1 {
+      font-size: var(--rythm);
+    }
   }
 </style>
 
