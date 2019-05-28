@@ -45,6 +45,7 @@ I worked multiple co-op placements with the Interactive Learning Products team a
 - TypeScript
 - React
 - React Native
+- Svelte
 - Express
 - Agenda
 - Parcel
@@ -66,7 +67,6 @@ I worked multiple co-op placements with the Interactive Learning Products team a
 - Shopify
 - Ghost
 - Squarespace
-- Next.js
 - Stripe
 - Braintree
 - Imgix
@@ -87,6 +87,7 @@ I worked multiple co-op placements with the Interactive Learning Products team a
 - Server Containers
 - Ecommerce
 - UX Research
+- Information Architecture
 - Customer Relationships
 
 #### Others
