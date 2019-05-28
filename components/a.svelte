@@ -36,6 +36,6 @@
 </a>
 {:else}
 <Link to="{to}" on:click={onClick}>
-  <slot />
+  <span class:underline><slot /></span>
 </Link>
 {/if}

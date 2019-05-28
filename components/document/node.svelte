@@ -1,0 +1,51 @@
+<script>
+  import Mark from './mark'
+
+  import A from '../a'
+  import Flex from '../flex'
+  import Document from './'
+  import Products from '../products'
+
+  export let node
+</script>
+
+{#if node.nodeType === 'heading-2'}
+  <h2>{#each node.content as mark}<Mark mark={mark} />{/each}</h2>
+{:else if node.nodeType === 'heading-3'}
+  <h3>{#each node.content as mark}<Mark mark={mark} />{/each}</h3>
+{:else if node.nodeType === 'heading-6'}
+  <h6>{#each node.content as mark}<Mark mark={mark} />{/each}</h6>
+{:else if node.nodeType === 'paragraph'}
+  <p>{#each node.content as mark}<Mark mark={mark} />{/each}</p>
+{:else if node.nodeType === 'unordered-list'}
+<ul>
+  {#each node.content as item}<li>{#each item.content as node}<svelte:self node={node} />{/each}</li>{/each}
+</ul>
+{:else if node.nodeType === 'blockquote'}
+<pre>{#each node.content as code}<svelte:self node={code} />{/each}</pre>
+{:else if node.nodeType === 'embedded-entry-block'}
+  {#if node.data.target.sys.contentType.sys.id === 'collection'}
+  <Products products={node.data.target.fields.products} />
+  {:else if node.data.target.sys.contentType.sys.id === 'bookshelf'}
+  <div>
+    <A to={`/${node.data.target.sys.contentType.sys.id}s/${node.data.target.fields.identifier}`}><h2>{node.data.target.fields.title}</h2></A>
+  </div>
+  {:else if node.data.target.sys.contentType.sys.id === 'playlist'}
+  <article>
+    <h4><A to={node.data.target.fields.embedCode} external><h2>{node.data.target.fields.title}</h2></A></h4>
+    <p>{node.data.target.fields.excerpt}</p>
+    <iframe src={node.data.target.fields.embedCode} title={node.data.target.fields.title} width='100%' height='366' frameBorder='0' allow='encrypted-media' />
+  </article>
+  {:else if node.data.target.sys.contentType.sys.id === 'columns'}
+  <h6>{node.data.target.fields.title}</h6>
+  <Flex>
+    {#each node.data.target.fields.columns as column}
+      {#if column.fields.size === 'One-third'}
+      <div><Document body={column.fields.body} /></div>
+      {:else if column.fields.size === 'One-quarter'}
+      <div><Document body={column.fields.body} /></div>
+      {/if}
+    {/each}
+  </Flex>
+  {/if}
+{/if}

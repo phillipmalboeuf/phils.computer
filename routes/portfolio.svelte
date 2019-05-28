@@ -3,6 +3,7 @@
   import { content, locale } from '../stores/content'
 
   import A from '../components/a'
+  import Document from '../components/document'
 
   export let id
   $: portfolio = $content.portfolios.items.find(portfolio => portfolio.fields.identifier === id)
@@ -36,7 +37,7 @@
 </style>
 
 <h1>{portfolio.fields.title}</h1>
-{@html rich(portfolio.fields.description)}
+<Document body={portfolio.fields.description} />
 
 {#each portfolio.fields.projects as project (project.sys.id)}
 <article>

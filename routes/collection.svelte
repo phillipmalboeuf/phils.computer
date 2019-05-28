@@ -3,6 +3,7 @@
   import { content, locale } from '../stores/content'
 
   import A from '../components/a'
+  import Document from '../components/document'
   import Products from '../components/products'
 
   export let id
@@ -10,5 +11,5 @@
 </script>
 
 <h1>{collection.fields.title}</h1>
-{@html rich(collection.fields.description)}
+<Document body={collection.fields.description} />
 <Products products={collection.fields.products} />
