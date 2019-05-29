@@ -33,12 +33,12 @@
 
   {:else if node.data.target.sys.contentType.sys.id === 'bookshelf'}
   <div>
-    <A to={`/${node.data.target.sys.contentType.sys.id}s/${node.data.target.fields.identifier}`}><h2>{node.data.target.fields.title}</h2></A>
+    <A to={`/${node.data.target.sys.contentType.sys.id}s/${node.data.target.fields.identifier}`}><span class='huge'>{node.data.target.fields.title}</span></A>
   </div>
 
   {:else if node.data.target.sys.contentType.sys.id === 'playlist'}
   <article>
-    <h4><A to={node.data.target.fields.embedCode} external><h2>{node.data.target.fields.title}</h2></A></h4>
+    <A to={node.data.target.fields.embedCode} external><span class='big'>{node.data.target.fields.title}</span></A>
     <p>{node.data.target.fields.excerpt}</p>
     <iframe src={node.data.target.fields.embedCode} title={node.data.target.fields.title} width='100%' height='366' frameBorder='0' allow='encrypted-media' />
   </article>

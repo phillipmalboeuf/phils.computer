@@ -76,6 +76,16 @@
     letter-spacing: -0.022em;
   }
 
+  :global(.huge, .big) {
+    font-weight: bold;
+    font-size: calc(var(--rythm)*4);
+    line-height: 1;
+  }
+
+  :global(.big) {
+    font-size: calc(var(--rythm)*3);
+  }
+
   :global(p + h1, p + h2, p + h3,
   ul + h1, ul + h2, ul + h3,
   ol + h1, ol + h2, ol + h3) {

@@ -7,6 +7,7 @@
   import Header from './components/header'
   import Footer from './components/footer'
 
+  import Bookshelf from './routes/bookshelf'
   import Article from './routes/article'
   import Journal from './routes/journal'
   import Collection from './routes/collection'
@@ -24,6 +25,7 @@
 <Router url="{url}">
   <Header />
   <main>
+    <Route path="bookshelfs/:id" component="{Bookshelf}" />
     <Route path="journals/:journal_id/articles/:id" component="{Article}" />
     <Route path="journals/:id" component="{Journal}" />
     <Route path="collections/:id" component="{Collection}" />
