@@ -1,5 +1,5 @@
 <script>
-  import { rich, date } from '../helpers/formatters'
+  import { date } from '../helpers/formatters'
   import { content, locale } from '../stores/content'
 
   import A from '../components/a'

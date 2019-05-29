@@ -4,13 +4,11 @@
   "alias": "phils.computer",
   "builds": [
     { "src": "dist/main.js", "use": "@now/static" },
-    { "src": "dist/server.js", "use": "@now/node-server@canary" }
+    { "src": "checkout.js", "use": "@now/node" }
   ],
   "routes": [
     { "src": "/main.js", "dest": "dist/main.js" },
-    { "src": "/en-US/(.*)", "dest": "dist/server.js?locale=en-US" },
-    { "src": "/fr-CA/(.*)", "dest": "dist/server.js?locale=fr-CA" },
-    { "src": "/(.*)", "dest": "dist/server.js" }
+    { "src": "/checkout", "dest": "checkout.js" }
   ],
   "env": {
     "REDIRECT_ROOT": "https://phils.computer",

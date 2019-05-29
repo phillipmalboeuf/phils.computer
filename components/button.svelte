@@ -6,7 +6,6 @@
   export let disabled
   export let submit
   export let full
-  export let onClick
 </script>
 
 <style>
@@ -30,12 +29,12 @@
     border-radius: var(--radius);
   }
 
-  :hover,
-  :focus {
+  button:hover,
+  button:focus {
     top: -1px;
   }
 
-  :active {
+  button:active {
     top: 0px;
   }
 
@@ -60,7 +59,7 @@
 </a>
 {/if}
 {:else}
-<button type={submit ? 'submit' : 'button'} disabled={disabled} class:full on:click|preventDefault={onClick}>
+<button type={submit ? 'submit' : 'button'} disabled={disabled} class:full on:click>
   <slot />
 </button>
 {/if}

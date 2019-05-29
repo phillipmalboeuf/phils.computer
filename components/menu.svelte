@@ -10,13 +10,15 @@
 
   function toggle() {
     visible = !visible
-    // x.set(visible ? -100 : 0)
+    x.set(visible ? -100 : 0)
   }
 
-  // let x = spring(0, {
-	// 	stiffness: 0.1,
-	// 	damping: 0.25
-	// })
+  let x = spring(0, {
+		stiffness: 0.1,
+		damping: 0.25
+	})
+
+  console.log($x)
 </script>
 
 <style>
@@ -39,9 +41,9 @@
     transition: transform 0.666s cubic-bezier(0, 1.33, 1, 1);
   }
 
-  div.visible {
+  /* div.visible {
     transform: translateX(-88%);
-  }
+  } */
 
   button {
     display: inline-block;
@@ -63,7 +65,7 @@
 </style>
 
 
-<div class:visible on:click|preventDefault={()=> toggle()}>
+<div style="transform: translateX({$x}%)" class:visible on:click|preventDefault={()=> toggle()}>
   <button>{#if visible}Close{:else}Menu{/if}</button>
   <Navigation links={links} />
 </div>

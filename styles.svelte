@@ -56,7 +56,7 @@
     }
   }
 
-  :global(article) {
+  :global(article, form) {
     margin: var(--rythm) 0;
   }
 

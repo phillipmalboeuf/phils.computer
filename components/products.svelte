@@ -1,12 +1,40 @@
 <script>
-  import { rich, date, money } from '../helpers/formatters'
+  import { rrulestr } from 'rrule'
+  import axios from 'axios'
+
+  import { date, money } from '../helpers/formatters'
   import { content, locale } from '../stores/content'
 
-  import A from '../components/a'
-  import Flex from '../components/flex'
-  import Button from '../components/button'
+  import A from './a'
+  import Flex from './flex'
+  import Input from './input'
+  import Button from './button'
+  import Overlay from './overlay'
+  import Document from './document'
 
   export let products = []
+
+  let email
+  let description
+  let requested_for
+
+  function checkout(product) {
+    axios.post(`${process.env.NODE_ENV === 'production' ? '' : '//localhost:3000'}/checkout`, {
+      email,
+      description,
+      items: [{
+        title: product.fields.title,
+        price: product.fields.price,
+        requested_for: new Date(requested_for),
+        quantity: product.fields.defaultQuantity
+      }]
+    })
+      .then(response => {
+        Stripe(process.env.STRIPE_PUBLIC_KEY).redirectToCheckout({
+          sessionId: response.data.id
+        })
+      })
+  }
 </script>
 
 <style>
@@ -31,7 +59,29 @@
   {#if product.fields.getInTouch}
   <Button to='mailto:phil@phils.computer' external>{product.fields.cta || 'Get in Touch'}</Button>
   {:else}
-  <Button>{product.fields.cta || 'Add to Cart'}</Button>
+  <Overlay button={product.fields.cta || 'Add to Cart'}>
+    <h4>{product.fields.cta || 'Add to Cart'}</h4>
+    <Document body={product.fields.description} />
+
+    <form on:submit|preventDefault={()=> checkout(product)}>
+    
+      <Input bind:value={email} type='email' name='email' label='Your email address' placeholder='you@your.tld' />
+      <Input bind:value={description} type='textarea' name='description' label='Provide upfront details here' placeholder='Describe your project, problem, idea...' max={280} />
+      <Input bind:value={requested_for} type='select' name='requested_for' label='Choose a booking datetime' options={
+        [{
+          label: 'Let me pick a time',
+          value: 'Let me pick a time'
+        }, ...rrulestr(product.fields.datesRules).all().map(dt => ({
+          label: date(dt),
+          value: dt.toISOString(),
+          disabled: product.fields.excludedDates && product.fields.excludedDates.map(excluded => new Date(excluded)).includes(dt)
+        }))]} />
+
+      <Button submit>Request – {money(product.fields.price * product.fields.defaultQuantity, 'CAD')}</Button>
+    </form>
+    
+    <A to='https://stripe.com' external><img src='https://images.ctfassets.net/igsltvx7i8jl/7GahQXpXJMRYmTpHPII20V/8d5e5c2ad08258602de6e29a3b40f34e/powered_by_stripe.svg' alt='Powered by Stripe' /></A>
+  </Overlay>
   {/if}
 </article>
 {/each}
