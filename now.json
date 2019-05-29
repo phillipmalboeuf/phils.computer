@@ -4,10 +4,12 @@
   "alias": "phils.computer",
   "builds": [
     { "src": "dist/main.js", "use": "@now/static" },
+    { "src": "content.js", "use": "@now/node" },
     { "src": "checkout.js", "use": "@now/node" }
   ],
   "routes": [
     { "src": "/main.js", "dest": "dist/main.js" },
+    { "src": "/content", "dest": "content.js" },
     { "src": "/checkout", "dest": "checkout.js" }
   ],
   "env": {

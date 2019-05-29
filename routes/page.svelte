@@ -1,6 +1,4 @@
 <script>
-  import { links } from 'svelte-routing'
-
   import { content } from '../stores/content'
 
   import A from '../components/a'

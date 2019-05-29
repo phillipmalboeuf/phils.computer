@@ -1,6 +1,4 @@
 <script>
-  import { link } from 'svelte-routing'
-
   export let to
   export let external
   export let disabled

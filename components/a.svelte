@@ -1,14 +1,17 @@
 <script>
-  import { Link } from 'svelte-routing'
+  import page from 'page'
+
+  import { current } from '../stores/pages'
+  import { locale } from '../stores/content'
 
   export let to = ''
   export let external = false
   export let rel
   export let underline = false
-  export let current = false
 
   function onClick() {
     window.scrollTo(0, 0)
+    page.show(to)
   }
 </script>
 
@@ -25,7 +28,7 @@
     text-decoration: underline;
   }
 
-  :global(a[aria-current]) {
+  .current {
     font-weight: bold;
   }
 </style>
@@ -35,7 +38,7 @@
   <slot />
 </a>
 {:else}
-<Link to="{to}" on:click={onClick}>
-  <span class:underline><slot /></span>
-</Link>
+<a href="{to}" class:underline on:click|preventDefault={onClick} class:current={$current === to}>
+  <slot />
+</a>
 {/if}

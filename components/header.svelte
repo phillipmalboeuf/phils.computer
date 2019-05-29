@@ -1,11 +1,27 @@
 <script>
-  import { content } from '../stores/content'
+  import page from 'page'
+  import axios from 'axios'
+
+  import { content, locale } from '../stores/content'
+  import { current } from '../stores/pages'
   
   import A from './a'
   import Navigation from './navigation'
   import Menu from './menu'
 
   let width = 999
+  let pathname = ''
+
+  function setLocale(l) {
+    localStorage.setItem('locale', l)
+    locale.set(l)
+
+    page.base(`/${l}`)
+    page.show($current)
+
+    axios.get(`${process.env.NODE_ENV === 'production' ? '' : '//localhost:3000'}/content?locale=${l}`)
+      .then(response => content.set(response.data))
+  }
 </script>
 
 <style>
@@ -37,6 +53,10 @@
       font-size: var(--rythm);
     }
   }
+
+  .current {
+    font-weight: bold;
+  }
 </style>
 
 <svelte:window bind:innerWidth={width} />
@@ -51,5 +71,6 @@
 </header>
 
 <header class='right'>
-  En Fr
+  <a href='/en-US' class:current={!$locale || $locale === 'en-US'} on:click|preventDefault={e => setLocale('en-US')}>En</a>
+  <a href='/fr-CA' class:current={$locale === 'fr-CA'} on:click|preventDefault={e => setLocale('fr-CA')}>Fr</a>
 </header>
