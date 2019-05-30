@@ -53,7 +53,7 @@ export class Glide extends Fade {
     hidden: css`
       transform: translateY(-100%);
       will-change: transform;
-      transition: transform ${slow}s cubic-bezier(0, 1.33, 1, 1);
+      transition: transform ${slow}s cubic-bezier(0, -0.55, 0.266, 1.55);
     `,
     visible: css`
       transform: translateY(0);
@@ -66,7 +66,7 @@ export class Scale extends Fade {
     hidden: css`
       transform: scale(0.88);
       will-change: transform;
-      transition: transform ${slow}s cubic-bezier(0, 1.33, 1, 1);
+      transition: transform ${slow}s cubic-bezier(0, -0.55, 0.266, 1.55);
     `,
     visible: css`
       transform: scale(1);

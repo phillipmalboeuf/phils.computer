@@ -45,7 +45,7 @@ const styles = breakpoints(css`
       border-radius: ${radius}px;
 
       transform: translateX(0);
-      transition: transform ${slow}s cubic-bezier(0, 1.2, 1, 1);
+      transition: transform ${slow}s cubic-bezier(0, -0.55, 0.266, 1.55);
 
       &:before {
         content: "Menu";
