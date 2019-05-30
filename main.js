@@ -6,7 +6,7 @@ const locale = localStorage.getItem('locale') || undefined
 entries(locale).then(content => new Main({
 	target: document.getElementById('main'),
 	props: {
-		locale,
-		content
+		defaultLocale: locale,
+		defaultContent: content
 	}
 }))

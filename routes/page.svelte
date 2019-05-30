@@ -1,5 +1,5 @@
 <script>
-  import { content } from '../stores/content'
+  import { content, locale } from '../main'
 
   import A from '../components/a'
   import Document from '../components/document'

@@ -1,5 +1,5 @@
 <script>
-  import { content } from '../stores/content'
+  import { content, locale } from '../main'
 
   import Flex from './flex'
   import Navigation from './navigation'

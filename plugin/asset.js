@@ -13,7 +13,13 @@ class SvelteAsset extends Asset {
   }
 
   async generate() {
-    const result = await svelte.compile(this.contents, {
+    const result = await svelte.compile(this.contents, process.env.SSR
+    ? {
+      generate: 'ssr',
+      css: false,
+      preserveWhitespace: true
+    }
+    : {
       hydratable: true,
       css: false
     })

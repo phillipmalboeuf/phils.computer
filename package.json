@@ -13,7 +13,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "parcel index.html -p 8888 --open --no-cache",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "now:dev": "now dev",
+    "now-build": "SSR=true parcel build main.svelte --out-file=main.svelte.js --no-source-maps"
   },
   "author": "Phillip Malboeuf <phil@phils.computer>",
   "license": "ISC",

@@ -3,7 +3,7 @@
   import axios from 'axios'
 
   import { date, money } from '../helpers/formatters'
-  import { content, locale } from '../stores/content'
+  import { content, locale } from '../main'
 
   import A from './a'
   import Flex from './flex'

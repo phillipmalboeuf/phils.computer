@@ -2,8 +2,7 @@
   import page from 'page'
   import axios from 'axios'
 
-  import { content, locale } from '../stores/content'
-  import { current } from '../stores/pages'
+  import { path, content, locale } from '../main'
   
   import A from './a'
   import Navigation from './navigation'
@@ -17,7 +16,7 @@
     locale.set(l)
 
     page.base(`/${l}`)
-    page.show($current)
+    page.show($path)
 
     axios.get(`${process.env.NODE_ENV === 'production' ? '' : '//localhost:3000'}/content?locale=${l}`)
       .then(response => content.set(response.data))

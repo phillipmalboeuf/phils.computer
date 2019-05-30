@@ -5,12 +5,16 @@
   "builds": [
     { "src": "dist/main.js", "use": "@now/static" },
     { "src": "content.js", "use": "@now/node" },
-    { "src": "checkout.js", "use": "@now/node" }
+    { "src": "checkout.js", "use": "@now/node" },
+    { "src": "index.js", "use": "@now/node" }
   ],
   "routes": [
     { "src": "/main.js", "dest": "dist/main.js" },
     { "src": "/content", "dest": "content.js" },
-    { "src": "/checkout", "dest": "checkout.js" }
+    { "src": "/checkout", "dest": "checkout.js" },
+    { "src": "/en-US/(.*)", "dest": "index.js?locale=en-US" },
+    { "src": "/fr-CA/(.*)", "dest": "index.js?locale=fr-CA" },
+    { "src": "/(.*)", "dest": "index.js" }
   ],
   "env": {
     "REDIRECT_ROOT": "https://phils.computer",

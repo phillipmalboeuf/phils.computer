@@ -1,8 +1,7 @@
 <script>
   import page from 'page'
 
-  import { current } from '../stores/pages'
-  import { locale } from '../stores/content'
+  import { path, locale } from '../main'
 
   export let to = ''
   export let external = false
@@ -38,7 +37,7 @@
   <slot />
 </a>
 {:else}
-<a href="{to}" class:underline on:click|preventDefault={onClick} class:current={$current === to}>
+<a href="{to}" class:underline on:click|preventDefault={onClick} class:current={$path === to}>
   <slot />
 </a>
 {/if}
