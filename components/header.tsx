@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { SFC } from 'react'
+import { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { ContentContext } from '../contexts/content'
 
@@ -45,11 +45,7 @@ const styles = breakpoints(css`
       border-radius: ${radius}px;
 
       transform: translateX(0);
-      transition: transform ${slow}s;
-
-      &:hover {
-        transform: translateX(-100%);
-      }
+      transition: transform ${slow}s cubic-bezier(0, 1.2, 1, 1);
 
       &:before {
         content: "Menu";
@@ -73,6 +69,16 @@ const styles = breakpoints(css`
   `
 })
 
+const visible = css`
+  > nav {
+    transform: translateX(-88%);
+
+    &:before {
+      content: "Close";
+    }
+  }
+`
+
 const right = breakpoints(css`
   left: auto;
   right: 0;
@@ -85,16 +91,29 @@ const right = breakpoints(css`
   `
 })
 
-export const Header: SFC<{}> = props => {
-  return <ContentContext.Consumer>
-    {({ content, locale, selectLocale }) => <>
-      <header className={styles}>
-        <A to='/'><Medium>{content.header.fields.title}</Medium></A>
-        <Navigation links={content.header.fields.links} />
-      </header>
-      <header className={[styles, right].join(' ')}>
-        <A current={locale === undefined || locale === 'en-US'} onClick={e => selectLocale('en-US')}>En</A> <A current={locale === 'fr-CA'} onClick={e => selectLocale('fr-CA')}>Fr</A>
-      </header>
-    </>}
-  </ContentContext.Consumer>
+export class Header extends Component<{}, {
+  visible: boolean
+}> {
+
+  constructor(props: {}) {
+    super(props)
+    this.state = {
+      visible: false
+    }
+  }
+
+  render() {
+      return <ContentContext.Consumer>
+      {({ content, locale, selectLocale }) => <>
+        <header className={[styles, this.state.visible && visible].filter(style => style).join(' ')}
+          onClick={e => window.innerWidth <= 988 && this.setState({ visible: !this.state.visible })}>
+          <A to='/'><Medium>{content.header.fields.title}</Medium></A>
+          <Navigation links={content.header.fields.links} />
+        </header>
+        <header className={[styles, right].join(' ')}>
+          <A current={locale === undefined || locale === 'en-US'} onClick={e => selectLocale('en-US')}>En</A> <A current={locale === 'fr-CA'} onClick={e => selectLocale('fr-CA')}>Fr</A>
+        </header>
+      </>}
+    </ContentContext.Consumer>
+  }
 }
