@@ -106,9 +106,9 @@ export class Header extends Component<{}, {
       return <ContentContext.Consumer>
       {({ content, locale, selectLocale }) => <>
         <header className={[styles, this.state.visible && visible].filter(style => style).join(' ')}
-          onClick={e => window.innerWidth <= 988 && this.setState({ visible: !this.state.visible })}>
+          >
           <A to='/'><Medium>{content.header.fields.title}</Medium></A>
-          <Navigation links={content.header.fields.links} />
+          <Navigation links={content.header.fields.links} onClick={()=> window.innerWidth <= 988 && this.setState({ visible: !this.state.visible })} />
         </header>
         <header className={[styles, right].join(' ')}>
           <A current={locale === undefined || locale === 'en-US'} onClick={e => selectLocale('en-US')}>En</A> <A current={locale === 'fr-CA'} onClick={e => selectLocale('fr-CA')}>Fr</A>

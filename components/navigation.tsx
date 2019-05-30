@@ -11,6 +11,7 @@ import { rythm } from '../styles'
 
 interface Props {
   links: Entry<ContentLink>[]
+  onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void
 }
 interface State {}
 
@@ -23,7 +24,7 @@ export class Navigation extends PureComponent<Props, State> {
   context!: React.ContextType<typeof ContentContext>
 
   render() {
-    return <nav>
+    return <nav onClick={this.props.onClick}>
       {this.props.links && this.props.links.map(link => <React.Fragment key={link.sys.id}>
         {link.fields.internalLink
         && <A
