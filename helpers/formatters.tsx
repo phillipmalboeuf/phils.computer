@@ -41,6 +41,9 @@ export const rich = (value: Document, render?: RenderNode) => documentToReactCom
     [INLINES.ENTRY_HYPERLINK]: (node, children)=> {
       return <A to={`/${node.data.target.sys.contentType.sys.id}s/${node.data.target.fields.identifier}`} underline>{children}</A>
     },
+    [INLINES.ASSET_HYPERLINK]: (node, children)=> {
+      return <A to={node.data.target.fields.file.url} underline external>{children}</A>
+    },
     ...render
   }
 })
