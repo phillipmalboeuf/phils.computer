@@ -27,6 +27,11 @@ export const money = (value: number, currency?: string) =>
 
 export const rich = (value: Document, render?: RenderNode) => documentToReactComponents(value, {
   renderNode: {
+    [BLOCKS.EMBEDDED_ASSET]: (node, children)=> {
+      console.log(node)
+      console.log(children)
+      return <></>
+    },
     [BLOCKS.QUOTE]: (node, children)=> {
       return <Code>{children}</Code>
     },

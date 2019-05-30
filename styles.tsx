@@ -141,5 +141,12 @@ export const GlobalStyles: SFC<{}> = props => <Global
       line-height: ${rythm}px;
       white-space: pre;
     }
+
+    iframe {
+      width: 100%;
+      height: 33vh;
+      background-color: ${colors.black};
+      margin-bottom: ${rythm}px;
+    }
   `}
 />
