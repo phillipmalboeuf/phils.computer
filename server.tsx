@@ -139,7 +139,7 @@ server.get('/*', async (req: Request, res: Response) => {
 
   const helmet = Helmet.renderStatic()
 
-  res.setHeader('Cache-Control', 's-maxage=1, stale-while-revalidate')
+  res.setHeader('Cache-Control', 's-maxage=1, stale-while-revalidate, max-age=0')
   res.send(`<!doctype html>${html
     .replace('</head>', `${helmet.title.toString()}${helmet.meta.toString()}${helmet.link.toString()}<style>${css}</style></head>`)
     .replace('</body>', `<script>window.style_ids = ${JSON.stringify(ids)}</script></body>`)
