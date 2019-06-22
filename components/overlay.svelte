@@ -1,5 +1,6 @@
 <script>
-  import { fade } from 'svelte/transition'
+  import { scale, fade } from 'svelte/transition'
+  import { elasticOut } from 'svelte/easing'
 
   import Button from './button'
 
@@ -93,9 +94,9 @@
 <Button on:click={toggle}>{button}</Button>
 {/if}
 {#if visible}
-<aside>
+<aside transition:fade={{ duration: 333 }}>
   <button on:click|preventDefault={hide} />
-  <div style="{`transform-origin: ${origin.x*100}% ${origin.y*100}%`}">
+  <div in:scale={{ duration: 1666, start: 0.98, easing: elasticOut }} style="{`transform-origin: ${origin.x*100}% ${origin.y*100}%`}">
     <button on:click|preventDefault={hide}>✕</button>
     <slot />
   </div>
