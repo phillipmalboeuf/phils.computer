@@ -15,6 +15,15 @@
 </script>
 
 <style>
+  a {
+    position: relative;
+  }
+  
+  a:hover,
+  a:focus {
+    top: -1px;
+  }
+
   .underline {
     background-image: linear-gradient(var(--kelly), var(--kelly));
     background-repeat: no-repeat;
