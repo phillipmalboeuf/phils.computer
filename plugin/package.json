@@ -1,6 +1,6 @@
 {
   "devDependencies": {
     "parcel-bundler": "^1.12.3",
-    "svelte": "^3.4.2"
+    "svelte": "^3.5.3"
   }
 }

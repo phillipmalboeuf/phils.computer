@@ -7,9 +7,7 @@
 </script>
 
 <script>
-  console.log('Hi! This thing\'s source can be found here: https://github.com/phillipmalboeuf/phils.computer')
-
-  import { tick } from 'svelte'
+  import { tick, onMount } from 'svelte'
   import page from 'page'
   import axios from 'axios'
 
@@ -31,41 +29,50 @@
 
   path.set(defaultPath)
   locale.set(defaultLocale)
-  content.set(defaultContent)
+  content.set(defaultContent) 
 
+  let main
   let component
+  let params
 
-  function pages(target) {
-    if (defaultLocale) {
-      page.base(`/${defaultLocale}`)
-    }
-
-    page('*', (ctx, next)=> {
-      if (component) { component.$destroy() }
-      path.set(ctx.page.current)
-      next()
-    })
-    
-    page('/', ({ params })=> component = new Home({ target, props: params, intro: true }))
-    page('/bookshelfs/:id', ({ params })=> component = new Bookshelf({ target, props: params, intro: true }))
-    page('/journals/:journal_id/articles/:id', ({ params })=> component = new Article({ target, props: params, intro: true }))
-    page('/journals/:id', ({ params })=> component = new Journal({ target, props: params, intro: true }))
-    page('/collections/:id', ({ params })=> component = new Collection({ target, props: params, intro: true }))
-    page('/portfolios/:id', ({ params })=> component = new Portfolio({ target, props: params, intro: true }))
-    page('/pages/:id', ({ params })=> component = new Page({ target, props: params, intro: true }))
-    page('/thanks', ({ params })=> component = new Thanks({ target, props: params, intro: true }))
-
-    page.start({ click: false })
+  if (defaultLocale) {
+    page.base(`/${defaultLocale}`)
   }
+
+  page('*', (ctx, next)=> {
+    path.set(ctx.page.current)
+    params = ctx.params
+    next()
+  })
+  
+  page('/', ({ params })=> { component = Home })
+  page('/bookshelfs/:id', ({ params })=> { component = Bookshelf })
+  page('/journals/:journal_id/articles/:id', ({ params })=> { component = Article })
+  page('/journals/:id', ({ params })=> { component = Journal })
+  page('/collections/:id', ({ params })=> { component = Collection })
+  page('/portfolios/:id', ({ params })=> { component = Portfolio })
+  page('/pages/:id', ({ params })=> { component = Page })
+  page('/thanks', ({ params })=> { component = Thanks })
+
+  if (defaultPath) {
+    page(defaultPath)
+  }
+
+  onMount(()=> {
+    console.log('Hi! This thing\'s source can be found here: https://github.com/phillipmalboeuf/phils.computer')
+    page.start({ click: false })
+  })
 </script>
 
 
 
-{#await tick then }
 <Header />
-<main use:pages />
+<main>
+  {#if component}
+  <svelte:component this={component} {...params} />
+  {/if}
+</main>
 <Footer />
-{/await}
 
 
 
@@ -132,7 +139,6 @@
   }
 
   :global(h1, h2, h3, h4, h5, h6, p) {
-    white-space: pre-line;
     margin: 0 0 var(--rythm);
   }
 

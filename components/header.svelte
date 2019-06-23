@@ -9,7 +9,6 @@
   import Menu from './menu'
 
   let width = 999
-  let pathname = ''
 
   function setLocale(l) {
     localStorage.setItem('locale', l)
