@@ -47,7 +47,7 @@
   <slot />
 </a>
 {:else}
-<a href="{to}" class:underline on:click|preventDefault={onClick} class:current={$path === to}>
+<a href="{to}" class:underline on:click|preventDefault={onClick} class:current={$path && $path.indexOf(to) === 0}>
   <slot />
 </a>
 {/if}
