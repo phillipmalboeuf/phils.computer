@@ -68,9 +68,7 @@
 
 <Header />
 <main>
-  {#if component}
   <svelte:component this={component} {...params} />
-  {/if}
 </main>
 <Footer />
 
@@ -140,6 +138,7 @@
 
   :global(h1, h2, h3, h4, h5, h6, p) {
     margin: 0 0 var(--rythm);
+    white-space: pre-wrap;
   }
 
   :global(p:last-child) {

@@ -18,6 +18,8 @@
   let description
   let requested_for
 
+  let mailto = 'mailto:phil@phils.computer'
+
   function checkout(product) {
     axios.post(`${process.env.NODE_ENV === 'production' ? '' : '//localhost:3000'}/checkout`, {
       email,
@@ -57,7 +59,7 @@
   </Flex>
   <p>{product.fields.excerpt}</p>
   {#if product.fields.getInTouch}
-  <Button to='mailto:phil@phils.computer' external>{product.fields.cta || 'Get in Touch'}</Button>
+  <Button to={mailto} external>{product.fields.cta || 'Get in Touch'}</Button>
   {:else}
   <Overlay button={product.fields.cta || 'Add to Cart'}>
     <h4>{product.fields.cta || 'Add to Cart'}</h4>

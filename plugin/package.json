@@ -1,6 +1,8 @@
 {
+  "name": "parcel-plugin-svelte",
+  "version": "0.1.0",
   "devDependencies": {
     "parcel-bundler": "^1.12.3",
-    "svelte": "^3.5.3"
+    "svelte": "^3.6.1"
   }
 }

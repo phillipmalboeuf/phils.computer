@@ -8,8 +8,9 @@
   export let rel
   export let underline = false
 
-  function onClick() {
+  function onClick(e) {
     window.scrollTo(0, 0)
+    e.currentTarget.blur()
     page.show(to)
   }
 </script>

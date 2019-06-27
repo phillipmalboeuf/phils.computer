@@ -3,13 +3,15 @@
   "name": "phils.computer",
   "alias": "phils.computer",
   "builds": [
-    { "src": "dist/main.svelte.js", "use": "@now/static" },
+    { "src": "dist/hydrate.js", "use": "@now/static" },
+    { "src": "dist/hydrate.css", "use": "@now/static" },
     { "src": "content.js", "use": "@now/node" },
     { "src": "checkout.js", "use": "@now/node" },
     { "src": "index.js", "use": "@now/node" }
   ],
   "routes": [
-    { "src": "/main.js", "dest": "dist/main.svelte.js" },
+    { "src": "/hydrate.(.*).js", "dest": "dist/hydrate.js" },
+    { "src": "/hydrate.(.*).css", "dest": "dist/hydrate.css" },
     { "src": "/content", "dest": "content.js" },
     { "src": "/checkout", "dest": "checkout.js" },
     { "src": "/en-US/(.*)", "dest": "index.js?locale=en-US" },

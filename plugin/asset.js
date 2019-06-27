@@ -16,7 +16,8 @@ class SvelteAsset extends Asset {
     const result = await svelte.compile(this.contents, process.env.SSR
     ? {
       generate: 'ssr',
-      css: false,
+      css: true,
+      immutable: true,
       preserveWhitespace: true
     }
     : {

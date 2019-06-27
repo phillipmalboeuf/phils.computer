@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "description": "",
   "engines": {
-    "node": "10"
+    "node": "10.x"
   },
   "browserslist": [
     "last 6 chrome version",
@@ -12,18 +12,18 @@
   ],
   "main": "index.js",
   "scripts": {
-    "dev": "parcel index.html -p 8888 --open --no-cache",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "parcel index.html -p 8888 --open",
+    "now": "now",
     "now:dev": "now dev",
-    "now-build": "SSR=true parcel build main.svelte --out-file=main.svelte.js --no-source-maps"
+    "now-build": "parcel build hydrate.js --out-file=hydrate.js --experimental-scope-hoisting --no-cache | SSR=true parcel build main.svelte --out-file=main.svelte.js --no-source-maps --no-cache"
   },
   "author": "Phillip Malboeuf <phil@phils.computer>",
   "license": "ISC",
   "devDependencies": {
-    "now": "^15.6.0",
+    "now": "^15.6.1",
     "parcel-bundler": "^1.12.3",
-    "parcel-plugin-svelte": "file:./plugin",
-    "svelte": "^3.5.3",
+    "parcel-plugin-svelte": "file:plugin",
+    "svelte": "^3.6.1",
     "typescript": "^3.4.5"
   },
   "dependencies": {
