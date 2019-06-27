@@ -2,6 +2,7 @@
   "version": 2,
   "name": "phils.computer",
   "alias": "phils.computer",
+  "regions": ["cle1", "sfo1", "cdg1"],
   "builds": [
     { "src": "dist/hydrate.js", "use": "@now/static" },
     { "src": "dist/hydrate.css", "use": "@now/static" },
