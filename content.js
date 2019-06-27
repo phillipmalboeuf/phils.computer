@@ -9,6 +9,7 @@ import { entries } from './clients/contentful'
 
 const server = express()
 server.disable('x-powered-by')
+server.enable('trust proxy')
 
 server.use(cors({ origin: true }))
 server.use(compression())
