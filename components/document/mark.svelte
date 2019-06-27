@@ -24,4 +24,8 @@
 <A to="/{mark.data.target.sys.contentType.sys.id}s/{mark.data.target.fields.identifier}" underline>
   {#each mark.content as mark}<svelte:self mark={mark} />{/each}
 </A>
+{:else if mark.nodeType === 'asset-hyperlink'}
+<A to="/{mark.data.target.fields.file.url}" external underline>
+  {#each mark.content as mark}<svelte:self mark={mark} />{/each}
+</A>
 {/if}

@@ -138,7 +138,7 @@
 
   :global(h1, h2, h3, h4, h5, h6, p) {
     margin: 0 0 var(--rythm);
-    white-space: pre-wrap;
+    white-space: pre-line;
   }
 
   :global(p:last-child) {
@@ -203,5 +203,12 @@
     font-size: calc(var(--rythm)/1.2);
     line-height: 1;
     white-space: pre;
+  }
+
+  :global(iframe) {
+    width: 100%;
+    height: 33vh;
+    background-color: var(--black);
+    margin: 0 0 var(--rythm);
   }
 </style>

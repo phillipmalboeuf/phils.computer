@@ -52,5 +52,9 @@
     {/each}
   </Flex>
   <br />
+
+  {:else if node.data.target.sys.contentType.sys.id === 'embed'}
+  <iframe title={node.data.target.fields.title} src={node.data.target.fields.source} frameBorder='0' allow='autoplay; fullscreen' allowFullScreen></iframe>
+
   {/if}
 {/if}
