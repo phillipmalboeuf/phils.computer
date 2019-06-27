@@ -13,9 +13,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "parcel index.html -p 8888 --open",
-    "now": "now",
+    "build": "parcel build hydrate.js --out-file=hydrate.js --experimental-scope-hoisting --no-cache",
+    "now": "npm run build && now --target production",
     "now:dev": "now dev",
-    "now-build": "parcel build hydrate.js --out-file=hydrate.js --experimental-scope-hoisting --no-cache | SSR=true parcel build main.svelte --out-file=main.svelte.js --no-source-maps --no-cache"
+    "now-build": "SSR=true parcel build main.svelte --out-file=main.svelte.js --no-source-maps --no-cache"
   },
   "author": "Phillip Malboeuf <phil@phils.computer>",
   "license": "ISC",
