@@ -43,11 +43,7 @@
 </style>
 
 {#if external}
-<a href="{to}" rel={rel} target="_blank" class:underline>
-  <slot />
-</a>
+<a href="{to}" rel={rel} target="_blank" class:underline><slot /></a>
 {:else}
-<a href="{to}" class:underline on:click|preventDefault={onClick} class:current={$path && $path.indexOf(to) === 0}>
-  <slot />
-</a>
+<a href="{to}" class:underline on:click|preventDefault={onClick} class:current={$path && $path.indexOf(to) === 0}><slot /></a>
 {/if}
