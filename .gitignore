@@ -1,6 +1,11 @@
-/node_modules
-/.cache
-/dist
+.DS_Store
+/node_modules/
+/src/node_modules/@sapper/
+yarn-error.log
+/cypress/screenshots/
+/__sapper__/
+/public/
 /_ignore
-npm-debug.log
+/.cache
 .env
+secret.json

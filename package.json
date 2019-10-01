@@ -1,43 +1,48 @@
 {
   "name": "phils.computer",
-  "version": "2.0.0",
-  "description": "",
-  "engines": {
-    "node": "10.x"
+  "description": "TODO",
+  "version": "2.0.1",
+  "engine": {
+    "node": 12
   },
-  "browserslist": [
-    "last 6 chrome version",
-    "last 6 safari version",
-    "last 6 firefox version"
-  ],
-  "main": "index.js",
   "scripts": {
-    "dev": "parcel index.html -p 8888 --open",
-    "build": "parcel build hydrate.js --out-file=hydrate.js --experimental-scope-hoisting --no-cache",
-    "now": "npm run build && now --target production",
-    "now:dev": "now dev",
-    "now-build": "SSR=true parcel build main.svelte --out-file=main.svelte.js --no-source-maps --no-cache"
-  },
-  "author": "Phillip Malboeuf <phil@phils.computer>",
-  "license": "ISC",
-  "devDependencies": {
-    "now": "^15.6.1",
-    "parcel-bundler": "^1.12.3",
-    "parcel-plugin-svelte": "file:plugin",
-    "svelte": "^3.6.1",
-    "typescript": "^3.4.5"
+    "dev": "sapper dev",
+    "build": "sapper build ./public",
+    "export": "sapper export --legacy",
+    "start": "node ./public",
+    "cy:run": "cypress run",
+    "cy:open": "cypress open",
+    "test": "run-p --race dev cy:run"
   },
   "dependencies": {
-    "@contentful/rich-text-html-renderer": "^13.1.0",
-    "axios": "^0.18.1",
+    "axios": "^0.19.0",
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
-    "contentful": "^7.8.0",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "page": "^1.11.4",
-    "prismjs": "^1.16.0",
-    "rrule": "^2.6.0",
-    "stripe": "^7.2.0"
+    "contentful": "^7.9.1",
+    "nconf": "^0.10.0",
+    "polka": "next",
+    "prismjs": "^1.17.1",
+    "rrule": "^2.6.2",
+    "sirv": "^0.4.2",
+    "stripe": "^7.9.0",
+    "useragent": "^2.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "@babel/runtime": "^7.6.2",
+    "now": "^16.3.0",
+    "npm-run-all": "^4.1.5",
+    "rollup": "^1.22.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-svelte": "^5.1.0",
+    "rollup-plugin-terser": "^5.1.2",
+    "sapper": "^0.27.9",
+    "svelte": "^3.12.1"
   }
 }
