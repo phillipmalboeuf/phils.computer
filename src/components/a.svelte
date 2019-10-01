@@ -42,5 +42,5 @@
 {#if external}
 <a href="{to}" rel={rel} target="_blank" class:underline><slot /></a>
 {:else}
-<a href="{to}" class:underline class:current><slot /></a>
+<a href="{to}" rel=prefetch class:underline class:current><slot /></a>
 {/if}
