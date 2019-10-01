@@ -14,6 +14,7 @@
 <script>
   import { date } from '../../../../helpers/formatters'
 
+  import Head from '../../../../components/head'
   import A from '../../../../components/a'
   import Document from '../../../../components/document'
 
@@ -25,6 +26,8 @@
 
   $: locale = $session.locale
 </script>
+
+<Head title={article.fields.title} description={article.fields.excerpt} />
 
 <h1>{article.fields.title}</h1>
 <p>

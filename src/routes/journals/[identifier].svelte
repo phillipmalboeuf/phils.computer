@@ -14,6 +14,7 @@
 <script>
   import { date } from '../../helpers/formatters'
 
+  import Head from '../../components/head'
   import A from '../../components/a'
 
   export let journal
@@ -23,6 +24,8 @@
 
   $: locale = $session.locale
 </script>
+
+<Head title={journal.fields.title} />
 
 {#each journal.fields.articles as article (article.sys.id)}
 <article>

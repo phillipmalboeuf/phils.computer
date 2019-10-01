@@ -14,6 +14,7 @@
 <script>
   import { date } from '../../helpers/formatters'
 
+  import Head from '../../components/head'
   import A from '../../components/a'
   import Document from '../../components/document'
 
@@ -51,6 +52,8 @@
     text-align: right;
   }
 </style>
+
+<Head title={portfolio.fields.title} description={portfolio.fields.excerpt} />
 
 <h1>{portfolio.fields.title}</h1>
 <Document body={portfolio.fields.description} />

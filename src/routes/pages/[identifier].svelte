@@ -12,9 +12,11 @@
 </script>
 
 <script>
+	import Head from '../../components/head'
   import Document from '../../components/document'
 
   export let page
 </script>
 
+<Head title={page.fields.title} description={page.fields.excerpt} />
 <Document body={page.fields.body} />

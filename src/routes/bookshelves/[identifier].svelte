@@ -14,12 +14,15 @@
 <script>
   import { date } from '../../helpers/formatters'
 
+	import Head from '../../components/head'
   import A from '../../components/a'
   import Document from '../../components/document'
   import Products from '../../components/products'
 
   export let bookshelf
 </script>
+
+<Head title={bookshelf.fields.title} />
 
 <h1>{bookshelf.fields.title}</h1>
 
