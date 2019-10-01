@@ -63,7 +63,7 @@
 </style>
 
 
-<div style={`transform: translateX(${$x}%)`} on:click|preventDefault={()=> toggle()}>
+<div style={`transform: translateX(${$x}%)`} on:click={()=> toggle()}>
   <button>{#if visible}Close{:else}Menu{/if}</button>
   <Navigation links={links} />
 </div>
