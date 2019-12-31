@@ -58,7 +58,7 @@
     max-width: 42rem;
     margin: 0 auto;
     min-height: 88vh;
-    padding: var(--gutter);
+    /* padding: var(--gutter); */
     padding: calc(var(--gutter)*2) calc(var(--gutter)) calc(var(--gutter)*3.33);
   }
 
@@ -148,11 +148,35 @@
     background-color: var(--black);
     margin: 0 0 var(--rythm);
   }
+
+  main.cards {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+
+    main.cards div {
+      padding: var(--gutter);
+      background-color: var(--white);
+      border: 7px solid var(--red);
+    }
+
+    main.cards :global(h1) {
+      font-size: calc(var(--rythm)*3);
+      margin-bottom: calc(var(--rythm)*1.666);
+      color: var(--red);
+    }
 </style>
 
-
+{#if segment === 'cards'}
+<main class={segment}>
+	<div><slot></slot></div>
+</main>
+{:else}
 <Header />
 <main>
 	<slot></slot>
 </main>
 <Footer />
+{/if}
