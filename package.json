@@ -21,7 +21,7 @@
     "contentful": "^7.9.1",
     "nconf": "^0.10.0",
     "polka": "next",
-    "prismjs": "^1.17.1",
+    "prismjs": "^1.21.0",
     "rrule": "^2.6.2",
     "sirv": "^0.4.2",
     "stripe": "^7.9.0",
