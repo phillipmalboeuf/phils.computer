@@ -2,13 +2,20 @@
 
 [phils.computer](https://phils.computer) – [phil@phils.computer](mailto:phil@phils.computer) – [@phillipmalboeuf](https://twitter.com/phillipmalboeuf) - [github.com/phillipmalboeuf](https://github.com/phillipmalboeuf)
 
-Fluent in French and English, currently based in Montréal, Canada
+Fluent in French and English, currently based in North Hatley, Canada
 
 ## Experience
 
-I'm a full-stack developer, proficient with the full spectrum of the development process, starting with user experience research and design, to front-end development with both HTML/Sass and React with styled-components, to back-end development in either Node.js or Python, passing by mobile development with React Native or Flutter, and finally managing both MongoDB and PostgreSQL databases. Most of my work is in the ecommerce domain, where I've gained extensive experience with Shopify and Stripe/Braintree custom integrations.
+I'm a full-stack developer, proficient with the full spectrum of the development process, starting with user experience research and design, to front-end development with both React and Svelte, to back-end development in either Node.js or Python, passing by mobile development with React Native or Flutter, and finally managing both MongoDB and PostgreSQL databases. Most of my work is in the ecommerce domain, where I've gained extensive experience with Shopify and Stripe/Braintree custom integrations. These days as Lead Developper, I've added project management and business intelligence skills to my toolbelt.
 
 And yet today, there's still plenty more for me to learn :)
+
+### Lead Developer, Dispatch Coffee
+
+_May 2019 - Present_
+
+I started working for Dispatch Coffee as a freelancer to rebuild their [e-commerce subscription platform](https://dispatchcoffee.ca) and have since moved to a full-time Lead Developer position. My role at Dispatch involves new feature development, user interface research and design, answering business intelligence queries, project management, and writing technical documentation. I've been with Dispatch from their launch online to a now approaching ~2500 active subscribers.
+
 
 ### Full-stack Web Developer, Freelance
 
@@ -18,11 +25,10 @@ To be a freelancer had always been a dream of mine. I'm able to give plenty of m
 
 The hub I built for my freelance practice lives here: [phils.computer](https://phils.computer) and here's a list of current clients you may contact to ask about me:
 
-- Chrissy from [Dispatch Coffee](https://dispatch.apps.phils.computer/) at chrissy@dispatchcoffee.ca
+- Chrissy from [Dispatch Coffee](https://dispatchcoffee.ca/) at chrissy@dispatchcoffee.ca
 - Charles from [Unsplash](https://unsplash.com/) at charlesdeluvio@gmail.com
-- Alex or Caro from [Rachel](https://en.fromrachel.com/) at alex@fromrachel.com
+- Alex from [Hookdeck](https://hookdeck.com/) at alex@hookdeck.com
 - Gabriel or Rachel from [Ethos](https://www.behance.net/ethosmtl) at glefebvre@ethosmtl.com
-- Laurent from [Bombom](https://bombombaby.com/) at laurent@bombombaby.com
 
 
 ### Mobile Web Developer, Frank and Oak
@@ -45,6 +51,7 @@ I worked multiple co-op placements with the Interactive Learning Products team a
 - TypeScript
 - React
 - React Native
+- Next.js
 - Svelte
 - Express
 - Agenda
@@ -59,7 +66,7 @@ I worked multiple co-op placements with the Interactive Learning Products team a
 
 #### Databases / Services
 
-- MongoDB, Stitch
+- MongoDB
 - PostgreSQL
 - Firebase
 - Algolia
@@ -69,12 +76,13 @@ I worked multiple co-op placements with the Interactive Learning Products team a
 - Squarespace
 - Stripe
 - Braintree
-- Imgix
+- Imgix / BunnyCDN
 
 #### Electronics
 
 - MicroPython
 - Johnny-Five
+- micro:bit
 - LoRa
 - WiFi
 - RFID
@@ -89,6 +97,8 @@ I worked multiple co-op placements with the Interactive Learning Products team a
 - UX Research
 - Information Architecture
 - Customer Relationships
+- Project Management
+- Business Intelligence
 
 #### Others
 
@@ -96,8 +106,9 @@ I worked multiple co-op placements with the Interactive Learning Products team a
 - Flutter
 - RRule
 - CSS/Sass
+- GraphQL
 - Styled-components
-- Zeit Now
+- Vercel
 - Dokku
 - Figma
 
@@ -105,10 +116,8 @@ I worked multiple co-op placements with the Interactive Learning Products team a
 
 Please visit my personal website at [phils.computer](https://phils.computer). There I share a lot of myself, including my web and product portfolios, brief articles, books I've read, and playlists I've put together.
 
-I recommend my article on freelancer-to-client communication mistakes: https://phils.computer/journals/articles/articles/subtle-communication-mistakes
-
 
 ## Education
 
-* **Polytechnique de Montréal:** 2020-TBD, Microprogramme de 2e cycle en Mécatronique
+* **École de technologie supérieure:** 2020-TBD, Programme court de 2e cycle en Éfficacité énergétique
 * **University of Ottawa:** 2008-2012, Software Engineering Graduate, Director of I.T. Engineering Student Society
