@@ -19,7 +19,7 @@
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
     "contentful": "^7.9.1",
-    "nconf": "^0.10.0",
+    "nconf": "^0.11.4",
     "polka": "next",
     "prismjs": "^1.17.1",
     "rrule": "^2.6.2",
