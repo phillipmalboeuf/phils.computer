@@ -40,12 +40,16 @@
 		padding: $base * $scale;
 
 		@media (max-width: $mobile) {
-			padding: $mobile_base * $mobile_scale;
+			padding: $mobile_base / $mobile_scale;
 		}
 
 		display: flex;
 		justify-content: space-between;
 		align-items: flex-end;
+
+		aside {
+			flex: 2;
+		}
 
 		nav {
 			text-align: right;

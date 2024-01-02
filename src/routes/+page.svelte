@@ -22,15 +22,24 @@
 		justify-content: center;
 		align-items: center;
 		min-height: 100vh;
+
+		@supports (height: 100dvh) {
+			min-height: 100dvh;
+		}
 	}
 
 	h1 {
 		pointer-events: none;
 		width: 100%;
-		font-size: 16.66vw;
+		font-size: 9.88vh;
 		line-height: 0.666;
 		z-index: 1;
-		margin-bottom: 20vh;
+		margin-bottom: 10vh;
+
+		@media (min-width: $mobile) {
+			font-size: 16.66vw;
+			margin-bottom: 20vh;
+		}
 
 		@supports (mix-blend-mode: exclusion) {
 			color: $white;
@@ -44,6 +53,9 @@
 		left: 0;
 		width: 100vw;
 		height: 100vh;
-		
+
+		@supports (height: 100dvh) {
+			min-height: 100dvh;
+		}
 	}
 </style>
