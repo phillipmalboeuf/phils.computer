@@ -1,6 +1,9 @@
 {
 	"name": "phils.computer",
 	"version": "3.0.0",
+	"engines": {
+		"node": "18"
+	},
 	"scripts": {
 		"dev": "vite dev --open",
 		"build": "vite build",
