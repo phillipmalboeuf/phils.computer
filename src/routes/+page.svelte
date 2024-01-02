@@ -22,10 +22,6 @@
 		justify-content: center;
 		align-items: center;
 		min-height: 100vh;
-
-		@supports (height: 100dvh) {
-			min-height: 100dvh;
-		}
 	}
 
 	h1 {
@@ -53,9 +49,5 @@
 		left: 0;
 		width: 100vw;
 		height: 100vh;
-
-		@supports (height: 100dvh) {
-			min-height: 100dvh;
-		}
 	}
 </style>
