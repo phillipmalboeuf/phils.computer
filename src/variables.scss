@@ -1,0 +1,22 @@
+// SIZES
+$base: 18px;
+$scale: 1.333333;
+$gap: $base * $scale;
+
+$mobile: 888px;
+$mobile_base: 16px;
+$mobile_scale: 1.275;
+$mobile_gap: $mobile_base * $mobile_scale;
+
+// FONTS
+$display: 'PP Pangaia', serif;
+$text: 'PP Neue Montreal Mono', monospace;
+$alt: serif;
+$alt_display: serif;
+
+// COLORS
+$black: #000001;
+$white: #FFFFFE;
+$ash: #F2F3F2;
+$kelly: #27AE60;
+$red: #CC0000;

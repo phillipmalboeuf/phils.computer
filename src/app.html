@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		%sveltekit.head%
+
+		<style>
+			@font-face {
+				font-family: 'PP Neue Montreal Mono';
+				font-style: normal;
+				font-weight: bold;
+				/* font-display: swap; */
+				src: local('PP Neue Montreal Mono'),
+					url('/fonts/PPNeueMontrealMono-Bold.woff2') format('woff2'),
+					url('/fonts/PPNeueMontrealMono-Bold.woff') format('woff'),
+			}
+
+			@font-face {
+				font-family: 'PP Neue Montreal Mono';
+				font-style: italic;
+				font-weight: bold;
+				/* font-display: swap; */
+				src: local('PP Neue Montreal Mono'),
+					url('/fonts/PPNeueMontrealMono-BoldItalic.woff2') format('woff2'),
+					url('/fonts/PPNeueMontrealMono-BoldItalic.woff') format('woff'),
+			}
+
+			@font-face {
+				font-family: 'PP Neue Montreal Mono';
+				font-style: normal;
+				font-weight: normal;
+				/* font-display: swap; */
+				src: local('PP Neue Montreal Mono'),
+					url('/fonts/PPNeueMontrealMono-Regular.woff2') format('woff2'),
+					url('/fonts/PPNeueMontrealMono-Regular.woff') format('woff'),
+			}
+
+			@font-face {
+				font-family: 'PP Neue Montreal Mono';
+				font-style: italic;
+				font-weight: normal;
+				/* font-display: swap; */
+				src: local('PP Neue Montreal Mono'),
+					url('/fonts/PPNeueMontrealMono-RegularItalic.woff2') format('woff2'),
+					url('/fonts/PPNeueMontrealMono-RegularItalic.woff') format('woff'),
+			}
+
+			@font-face {
+				font-family: 'PP Pangaia';
+				font-style: normal;
+				font-weight: bold;
+				/* font-display: swap; */
+				src: local('PP Pangaia'),
+					url('/fonts/PPPangaia-Bold.woff2') format('woff2'),
+					url('/fonts/PPPangaia-Bold.woff') format('woff'),
+			}
+
+			@font-face {
+				font-family: 'PP Pangaia';
+				font-style: italic;
+				font-weight: bold;
+				/* font-display: swap; */
+				src: local('PP Pangaia'),
+					url('/fonts/PPPangaia-BoldItalic.woff2') format('woff2'),
+					url('/fonts/PPPangaia-BoldItalic.woff') format('woff'),
+			}
+		</style>
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
+</html>
