@@ -17,7 +17,7 @@
 	<footer>
 		<aside>
 			<p>135 CAD/hour<br>
-			Available in <strong>{available}</strong></p>
+			Available as of <strong>{available}</strong></p>
 		</aside>
 
 		<nav>
