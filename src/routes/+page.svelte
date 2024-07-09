@@ -2,8 +2,8 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<title>Phil's Computer</title>
+	<meta name="description" content="Freelance web developer" />
 </svelte:head>
 
 <section>
