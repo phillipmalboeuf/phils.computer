@@ -16,7 +16,7 @@
 
 	<footer>
 		<aside>
-			<p>135 CAD/hour<br>
+			<p>140 CAD/hour<br>
 			Available as of <strong>{available}</strong></p>
 		</aside>
 
