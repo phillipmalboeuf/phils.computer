@@ -29,8 +29,9 @@
 		width: 100%;
 		font-size: 9.88vh;
 		line-height: 0.666;
-		z-index: 1;
+		z-index: 2;
 		margin-bottom: 10vh;
+		font-family: 'New Rocker', serif;
 
 		@media (min-width: $mobile) {
 			font-size: 16.66vw;
@@ -45,9 +46,14 @@
 
 	iframe {
 		position: absolute;
+		z-index: 1;
 		top: 0;
 		left: 0;
 		width: 100vw;
 		height: 100vh;
+
+		@supports (mix-blend-mode: exclusion) {
+			mix-blend-mode: hard-light;
+		}
 	}
 </style>

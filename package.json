@@ -2,7 +2,7 @@
 	"name": "phils.computer",
 	"version": "3.0.0",
 	"engines": {
-		"node": "18"
+		"node": "20"
 	},
 	"scripts": {
 		"dev": "vite dev --open",
@@ -13,8 +13,6 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
 	},
 	"devDependencies": {
-		"@fontsource/fira-mono": "^4.5.10",
-		"@neoconfetti/svelte": "^1.0.0",
 		"@playwright/test": "^1.28.1",
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/kit": "^2.0.0",
@@ -29,6 +27,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@fontsource/new-rocker": "^5.1.0",
 		"luxon": "^3.4.4"
 	}
 }

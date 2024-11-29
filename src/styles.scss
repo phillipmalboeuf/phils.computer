@@ -50,8 +50,12 @@ h2 {
 
 input,
 button {
+	cursor: pointer;
 	font-size: inherit;
 	font-family: inherit;
+	padding: 0;
+	border: none;
+	background-color: transparent;
 }
 
 button:focus:not(:focus-visible) {
