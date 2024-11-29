@@ -31,7 +31,10 @@
 		line-height: 0.666;
 		z-index: 2;
 		margin-bottom: 10vh;
-		font-family: 'New Rocker', serif;
+
+		:global(.dark) & {
+			font-family: 'New Rocker', serif;
+		}
 
 		@media (min-width: $mobile) {
 			font-size: 16.66vw;
@@ -52,8 +55,10 @@
 		width: 100vw;
 		height: 100vh;
 
-		@supports (mix-blend-mode: exclusion) {
-			mix-blend-mode: hard-light;
+		:global(.dark) & {
+			@supports (mix-blend-mode: exclusion) {
+				mix-blend-mode: hard-light;
+			}
 		}
 	}
 </style>
