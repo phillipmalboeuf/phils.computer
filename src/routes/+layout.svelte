@@ -82,6 +82,18 @@
 		}
 	}
 
+	header {
+		button {
+			transition: transform 333ms;
+			will-change: transform;
+
+			&:hover,
+			&:focus {
+				transform: rotate(-15deg);
+			}
+		}
+	}
+
 	footer {
 		top: auto;
 		bottom: 0;
