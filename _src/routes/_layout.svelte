@@ -174,9 +174,9 @@
 	<div><slot></slot></div>
 </main>
 {:else}
-<Header />
+<!-- <Header /> -->
 <main>
 	<slot></slot>
 </main>
-<Footer />
+<!-- <Footer /> -->
 {/if}

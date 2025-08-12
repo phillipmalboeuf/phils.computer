@@ -38,7 +38,7 @@
 
 		@media (min-width: $mobile) {
 			font-size: 16.66vw;
-			margin-bottom: 20vh;
+			// margin-bottom: 20vh;
 		}
 
 		@supports (mix-blend-mode: exclusion) {
