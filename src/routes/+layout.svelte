@@ -10,7 +10,7 @@
 </script>
 
 <div class="app" class:dark>
-	<!-- <header>
+	<header>
 		<button onclick={() => dark = !dark}>
 			{#if !dark}
 			<svg width="26" height="27" viewBox="0 0 26 27">
@@ -24,7 +24,7 @@
 			</svg>
 			{/if}
 		</button>
-	</header> -->
+	</header>
 
 	<main>
 		<slot />
@@ -32,7 +32,7 @@
 		{#if dark}<Flames />{/if}
 	</main>
 
-	<!-- <footer>
+	<footer>
 		<aside>
 			<p>140 CAD/hour<br>
 			Available as of <strong>{available}</strong></p>
@@ -42,7 +42,7 @@
 			<a href="mailto:phil@phils.computer" target="_blank" rel="external">phil@phils.computer</a><br>
 			<a href="https://github.com/phillipmalboeuf" target="_blank" rel="external">github.com/phillipmalboeuf</a>
 		</nav>
-	</footer> -->
+	</footer>
 </div>
 
 <style lang="scss">
